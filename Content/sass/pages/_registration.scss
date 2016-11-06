@@ -1,0 +1,55 @@
+.registration-wrapper {
+    text-align: center;
+
+    > form {
+        max-width: 400px;
+        padding: 15px;
+        margin: 0 auto;
+
+        > fieldset {
+            display: block;
+        }
+    }
+
+    input,
+    select,
+    option {
+        display: block;
+        width: 100%;
+        padding: 8px 10px;
+        margin: 12px 0;
+        border-radius: 2px;
+        border: 1px solid $divider-color;
+        color: $secondary-text-color;
+    }
+
+    label {
+        color: $secondary-text-color;
+    }
+
+    button[type="submit"] {
+        background: $primary-color;
+        border: none;
+        padding: 12px 72px;
+        text-transform: uppercase;
+        border-radius: 24px;
+        color: #fff;
+        display: block;
+        margin: 25px auto;
+        transition: box-shadow ease-in-out .3s;
+
+        &:hover {
+            box-shadow: 0 7px 26px $secondary-text-color;
+        }
+    }
+}
+
+.register-log {
+    background-color: $primary-color;
+    padding: 25px 0;
+
+    > img {
+        display:block;
+        margin: 0 auto;
+    }
+}

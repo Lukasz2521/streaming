@@ -1,0 +1,22 @@
+@import "main-variables";
+@import "global";
+
+@import "vendor/normalize";
+@import "vendor/variables";
+@import "vendor/clearfix";
+@import "vendor/grid-framework";
+@import "vendor/_grid_mixins";
+@import "vendor/grid";
+
+@import "base/icons";
+@import "base/fonts";
+@import "base/inputs";
+@import "base/buttons";
+
+@import "components/header";
+@import "components/footer";
+@import "components/single-audio";
+
+@import "pages/user-profile";
+@import "pages/registration";
+@import "pages/main";

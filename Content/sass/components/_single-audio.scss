@@ -1,0 +1,23 @@
+.single-audio {
+    height: 200px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    .song-owner {
+        display: inline-block;
+        margin-left: 12px;
+        line-height: 12px;
+        top: 50%;
+        margin-top: -.5em;
+        position: absolute;
+    }
+}
+
+.music-details {
+    position: relative;
+}
+
+.audio-avatar {
+    background-size: cover;
+    height: 100%;
+}

@@ -1,0 +1,28 @@
+input[type="radio"] {
+    display: none !important;
+
+    & + label {
+        line-height: 15px;
+        vertical-align: top;
+        margin-right: 15px;
+        transition: background ease-out .7;
+
+        > span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid $secondary-text-color;
+            background: #fff;
+        }
+    }
+
+    &:checked {
+        & + label {
+            > span {
+                background: $secondary-text-color;
+                box-shadow: 0 0 6px $secondary-text-color;
+            }
+        }
+    }
+}

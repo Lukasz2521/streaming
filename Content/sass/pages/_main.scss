@@ -1,0 +1,23 @@
+main.main {
+    height: 619px;
+    background-image: url('assets/img/main-background2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-headers {
+    text-align: center;
+    border-radius: 6px;
+    margin-top: 120px;
+    color: #212121;
+    display: inline-block;
+    padding: 12px 134px;
+    background: black;
+    opacity: 0.5;
+    color: #fff;
+    box-shadow: 0 50px 60px #000;
+    font-weight: 400;
+    margin-left: 50%;
+    margin-top: 24%;
+    transform: translate(-50%, -50%);
+}

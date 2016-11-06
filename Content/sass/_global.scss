@@ -1,0 +1,38 @@
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+html {
+    font-family: 'Nunito', Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'Nunito';
+}
+
+fieldset {
+    border: none !important;
+    padding: 0 !important;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input,
+textarea {
+    box-sizing: border-box;
+}
+
+main {
+    margin-top: 59px;
+}
