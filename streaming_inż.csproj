@@ -201,6 +201,27 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611041736029_InitialCreate.cs" />
+    <Compile Include="Migrations\201611041736029_InitialCreate.Designer.cs">
+      <DependentUpon>201611041736029_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611071826471_Extend register data.cs" />
+    <Compile Include="Migrations\201611071826471_Extend register data.Designer.cs">
+      <DependentUpon>201611071826471_Extend register data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611081931538_Change register model.cs" />
+    <Compile Include="Migrations\201611081931538_Change register model.Designer.cs">
+      <DependentUpon>201611081931538_Change register model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611082043343_Change register model 2.cs" />
+    <Compile Include="Migrations\201611082043343_Change register model 2.Designer.cs">
+      <DependentUpon>201611082043343_Change register model 2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611082132086_Remove table.cs" />
+    <Compile Include="Migrations\201611082132086_Remove table.Designer.cs">
+      <DependentUpon>201611082132086_Remove table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -210,10 +231,15 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\sass\main.css">
+      <DependentUpon>main.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\sass\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -224,6 +250,20 @@
     <Content Include="Content\sass\main.scss" />
     <Content Include="Content\sass\_global.scss" />
     <Content Include="Content\sass\_main-variables.scss" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="Content\sass\base\_buttons.scss" />
+    <Content Include="Content\sass\base\_fonts.scss" />
+    <Content Include="Content\sass\base\_icons.scss" />
+    <Content Include="Content\sass\base\_inputs.scss" />
+    <Content Include="Content\sass\components\_footer.scss" />
+    <Content Include="Content\sass\components\_header.scss" />
+    <Content Include="Content\sass\components\_single-audio.scss" />
+    <Content Include="Content\sass\pages\_main.scss" />
+    <Content Include="Content\sass\pages\_registration.scss" />
+    <Content Include="Content\sass\pages\_user-profile.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -273,9 +313,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\sass\base\" />
-    <Folder Include="Content\sass\components\" />
-    <Folder Include="Content\sass\pages\" />
     <Folder Include="Content\sass\vendor\" />
   </ItemGroup>
   <ItemGroup>
@@ -285,6 +322,23 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611041736029_InitialCreate.resx">
+      <DependentUpon>201611041736029_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611071826471_Extend register data.resx">
+      <DependentUpon>201611071826471_Extend register data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611081931538_Change register model.resx">
+      <DependentUpon>201611081931538_Change register model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611082043343_Change register model 2.resx">
+      <DependentUpon>201611082043343_Change register model 2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611082132086_Remove table.resx">
+      <DependentUpon>201611082132086_Remove table.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -82,16 +82,6 @@ namespace streaming_inż.Models
 
         [Required]
         public string UserName { get; set; }
-
-        [Required]
-        [RegularExpression("[0-9]")]
-        public int DayOfBirth { get; set; }
-
-        [Required]
-        public int MonthOfBirth { get; set; }
-
-        [Required]
-        public int YearOfBirth { get; set; }
     }
 
     public class ResetPasswordViewModel

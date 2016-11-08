@@ -80,3 +80,9 @@ c:\users\łukasz\documents\visual studio 2015\Projects\streaming_inż\bin\Micros
 c:\users\łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.csprojResolveAssemblyReference.cache
 c:\users\łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.dll
 c:\users\łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.pdb
+C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Migrations.InitialCreate.resources
+C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.csproj.GenerateResource.Cache
+C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Migrations.Extendregisterdata.resources
+C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Migrations.Changeregistermodel.resources
+C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Migrations.Changeregistermodel2.resources
+C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Migrations.Removetable.resources

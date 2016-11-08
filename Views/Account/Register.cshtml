@@ -1,43 +1,12 @@
-﻿@model streaming_inż.Models.RegisterViewModel
+﻿@using System.Globalization
+
+@model streaming_inż.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
 }
 
-
-@*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-}*@
-
 <div class="register">
-    <div class="register-log">
-        <img src="assets/img/sound-waves.png" alt="">
-    </div>
     <div class="registration-wrapper">
-        <form>
-            <button type="submit">zajrejestruj się przez facebooka</button>
-        </form>
         <div>
             <p>Lub zarejestruj się przy użyciu adresu E-mail</p>
         </div>
@@ -46,36 +15,37 @@
         {
             @Html.AntiForgeryToken()
 
-            @Html.TextAreaFor(x => x.UserName, new { @placeholder = "Nazwa użytkownika" })
-            @Html.PasswordFor(x => x.Password, new { @placehoder = "Hasło" })
+            @Html.TextBoxFor(x => x.UserName, new { @placeholder = "Nazwa użytkownika" })
+            @Html.PasswordFor(x => x.Password, new { @placeholder = "Hasło" })
             @Html.PasswordFor(x => x.ConfirmPassword, new { @placeholder = "Powtórz hasło" })
             @Html.TextBoxFor(x => x.Email, new { @placeholder = "E-mail" })
-            @Html.TextBoxFor(x => x.Email, new { @placeholder = "Potwierdź e-mail" })
 
-            <label for="">Data urodzenia</label> 
+            @*<label for="">Data urodzenia</label> 
             <fieldset>
                 @Html.TextBoxFor(x => x.DayOfBirth, new { @type = "number", @maxlength = 2, @min = 1, @max = 31, @placeholder = "Dzień"})
                 
                 <select>
-                    <option value="" selected disabled>miesiąc</option>
-                    <option value="01">styczeń</option>
-                    <option value="02">luty</option>
+                    <option value="" selected disabled>Miesiąc</option>
+                    @for (var monthNr = 1; monthNr < 13; monthNr++)
+                    {
+                        <option value="@monthNr">
+                            @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(monthNr).
+                        </option>
+                    }
                 </select>
-                @Html.TextBoxFor(x => x.DayOfBirth, new { @type = "number", @maxlength = 4 ,@placeholder = "Rok" })
-                <input type="number" maxlength="4" name="" value="" placeholder="Rok">
+                @Html.TextBoxFor(x => x.YearOfBirth , new { @type = "number", @maxlength = 4, @placeholder = "Rok" })
             </fieldset>
             <fieldset>
                 <input id="man-gender" type="radio" name="gender" value="m">
+                @Html.RadioButtonFor();
+
                 <label for="man-gender"><span></span> Mężczyzna</label>
                 <input id="woman-gender" type="radio" name="gender" value="k">
                 <label for="woman-gender"><span></span> Kobieta</label>
-            </fieldset>
+            </fieldset>*@
             <button type="submit">zarejestruj się</button>
         }
-
-        <form>
-        </form>
-    </div>
+     </div>
 </div>
 
 @section Scripts {

@@ -62,7 +62,7 @@ namespace streaming_inż.Controllers
         }
 
         //
-        // POST: /Account/Login
+        // POST: /Account/Login                                                        
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -151,7 +151,12 @@ namespace streaming_inż.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                  UserName = model.UserName,
+                  Email = model.Email
+                };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
