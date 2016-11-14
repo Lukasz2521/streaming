@@ -4,12 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" 3 href="~/Content/bootstrap.min.css" />
     <link rel="stylesheet"3 href="~/Content/sass/main.min.css" />
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -28,12 +30,52 @@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
+    </div>*@
+    <header class="container-fluid main">
+        <div class="row">
+            <div class="main-logo col-md-2">
+                <h1><a href="#"><img src="assets/img/sound-waves.png" alt=""></a></h1>
+            </div>
+            <div class="main-search col-md-4">
+                <input type="search" name="" value="" placeholder="Find song or user">
+            </div>
+            <div class="main-menu col-md-5">
+                <ul>
+                    <li>
+                        <a href="#">upload</a>
+                    </li>
+                    <li class="user-submenu">
+                        <a href="#">
+                            <span><img src="assets/img/avatar.png" alt=""></span>
+                            <span>Lukasz Radecki</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="login-btn" href="#">Login / Rejestracja</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
     <div class="container body-content">
+        <div id="login-popup" class="modal fade"  tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form class="form-horizontal" action="/" method="post">
+                            <input class="form-control" type="text" name="name" value="" placeholder="Nazwa użytkownika" />
+                            <input class="form-control" type="text" name="name" value="" placeholder="hasło" />
+                            <input class="btn btn-default" type="submit" name="name" value="Zaloguj" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+           
         </footer>
     </div>
 

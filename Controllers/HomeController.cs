@@ -11,6 +11,11 @@ namespace streaming_inż.Controllers
         public ActionResult Index()
         {
             return View();
+        } 
+
+        public ActionResult UnsignedUser()
+        {
+            return View(); // add view for unsigned user
         }
 
         public ActionResult About()

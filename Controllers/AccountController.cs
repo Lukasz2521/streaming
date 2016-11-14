@@ -170,6 +170,10 @@ namespace streaming_inż.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
+                else
+                {
+                   
+                }
                 AddErrors(result);
             }
 

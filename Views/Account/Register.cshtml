@@ -3,46 +3,25 @@
 @model streaming_inż.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
 <div class="register">
     <div class="registration-wrapper">
-        <div>
-            <p>Lub zarejestruj się przy użyciu adresu E-mail</p>
-        </div>
 
         @using (Html.BeginForm("Register", "Account", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
 
             @Html.TextBoxFor(x => x.UserName, new { @placeholder = "Nazwa użytkownika" })
+            @Html.ValidationMessageFor(x => x.UserName)
             @Html.PasswordFor(x => x.Password, new { @placeholder = "Hasło" })
+            @Html.ValidationMessageFor(x => x.Password)
             @Html.PasswordFor(x => x.ConfirmPassword, new { @placeholder = "Powtórz hasło" })
+            @Html.ValidationMessageFor(x => x.ConfirmPassword)
             @Html.TextBoxFor(x => x.Email, new { @placeholder = "E-mail" })
+            @Html.ValidationMessageFor(x => x.Email)
 
-            @*<label for="">Data urodzenia</label> 
-            <fieldset>
-                @Html.TextBoxFor(x => x.DayOfBirth, new { @type = "number", @maxlength = 2, @min = 1, @max = 31, @placeholder = "Dzień"})
-                
-                <select>
-                    <option value="" selected disabled>Miesiąc</option>
-                    @for (var monthNr = 1; monthNr < 13; monthNr++)
-                    {
-                        <option value="@monthNr">
-                            @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(monthNr).
-                        </option>
-                    }
-                </select>
-                @Html.TextBoxFor(x => x.YearOfBirth , new { @type = "number", @maxlength = 4, @placeholder = "Rok" })
-            </fieldset>
-            <fieldset>
-                <input id="man-gender" type="radio" name="gender" value="m">
-                @Html.RadioButtonFor();
-
-                <label for="man-gender"><span></span> Mężczyzna</label>
-                <input id="woman-gender" type="radio" name="gender" value="k">
-                <label for="woman-gender"><span></span> Kobieta</label>
-            </fieldset>*@
             <button type="submit">zarejestruj się</button>
         }
      </div>
