@@ -9,11 +9,14 @@ a {
 html {
     font-family: 'Nunito', Arial, Helvetica, sans-serif;
     font-size: 16px;
+    height: 100%;
 }
 
 body {
     overflow-x: hidden;
     font-family: 'Nunito';
+    min-height: 100%;
+    height: 100%;
 }
 
 fieldset {
@@ -34,5 +37,23 @@ textarea {
 }
 
 main {
-    margin-top: 59px;
+    margin-top: 58px;
+}
+
+.body-content {
+    height: 100%;
+}
+
+body::-webkit-scrollbar {
+    width: 1.20em;
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 8px $accent-color;
+    box-shadow: inset 0 0 8px $accent-color;
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: $primary-color;
+  outline: 1px solid $primary-color;
 }

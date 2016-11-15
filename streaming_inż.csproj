@@ -264,6 +264,7 @@
     <Content Include="Content\sass\pages\_main.scss" />
     <Content Include="Content\sass\pages\_registration.scss" />
     <Content Include="Content\sass\pages\_user-profile.scss" />
+    <Content Include="Content\sass\components\_modal.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -313,6 +314,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\UnsignedUserIndex.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Account\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

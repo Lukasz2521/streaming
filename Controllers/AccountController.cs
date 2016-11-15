@@ -91,6 +91,12 @@ namespace streaming_inż.Controllers
             }
         }
 
+        [AllowAnonymous]
+        public ActionResult Menu()
+        {
+            return PartialView("_Menu");
+        }
+
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]

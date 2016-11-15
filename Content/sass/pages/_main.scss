@@ -1,6 +1,6 @@
 main.main {
-    height: 619px;
-    background-image: url('assets/img/main-background2.jpg');
+    height: 100%;
+    background-image: url('http://smoothstyle.ca/wp-content/uploads/2011/02/online-music-1.bmp');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -12,8 +12,7 @@ main.main {
     color: #212121;
     display: inline-block;
     padding: 12px 134px;
-    background: black;
-    opacity: 0.5;
+    background: rgba(0, 0, 0, .7);
     color: #fff;
     box-shadow: 0 50px 60px #000;
     font-weight: 400;
