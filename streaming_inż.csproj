@@ -77,6 +77,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NAudio, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.7.3\lib\net35\NAudio.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -198,9 +202,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Migrations\201611041736029_InitialCreate.cs" />
     <Compile Include="Migrations\201611041736029_InitialCreate.Designer.cs">
       <DependentUpon>201611041736029_InitialCreate.cs</DependentUpon>
@@ -221,6 +227,14 @@
     <Compile Include="Migrations\201611082132086_Remove table.Designer.cs">
       <DependentUpon>201611082132086_Remove table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611242158125_Add Song and Category tables.cs" />
+    <Compile Include="Migrations\201611242158125_Add Song and Category tables.Designer.cs">
+      <DependentUpon>201611242158125_Add Song and Category tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611242201478_Add Song and Category tables 2.cs" />
+    <Compile Include="Migrations\201611242201478_Add Song and Category tables 2.Designer.cs">
+      <DependentUpon>201611242201478_Add Song and Category tables 2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -231,6 +245,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\sound-waves.png" />
     <Content Include="Content\sass\main.css">
       <DependentUpon>main.scss</DependentUpon>
     </Content>
@@ -265,6 +280,7 @@
     <Content Include="Content\sass\pages\_registration.scss" />
     <Content Include="Content\sass\pages\_user-profile.scss" />
     <Content Include="Content\sass\components\_modal.scss" />
+    <Content Include="Content\sass\components\_login.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -315,6 +331,8 @@
     <Content Include="Views\Home\UnsignedUserIndex.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Account\_Menu.cshtml" />
+    <Content Include="Views\Profile\UserProfile.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -342,6 +360,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611082132086_Remove table.resx">
       <DependentUpon>201611082132086_Remove table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611242158125_Add Song and Category tables.resx">
+      <DependentUpon>201611242158125_Add Song and Category tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611242201478_Add Song and Category tables 2.resx">
+      <DependentUpon>201611242201478_Add Song and Category tables 2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

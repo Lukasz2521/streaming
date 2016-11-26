@@ -14,9 +14,21 @@ namespace streaming_inż
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Register-view",
+                name: "Register-path",
                 url: "Register",
                 defaults: new { controller = "Account", action = "Register" }
+            );
+
+            routes.MapRoute(
+                name: "Login-path",
+                url: "login",
+                defaults: new { controller = "Account", action = "Login" }
+            );
+
+            routes.MapRoute(
+                name: "User-profile",
+                url:  "user/{userName}",
+                defaults: new { controller = "Profile", action = "Index" }
             );
 
             routes.MapRoute(

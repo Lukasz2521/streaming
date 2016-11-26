@@ -29,9 +29,6 @@ input,
 textarea {
   box-sizing: border-box; }
 
-main {
-  margin-top: 58px; }
-
 .body-content {
   height: 100%; }
 
@@ -45,6 +42,11 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: #3F51B5;
   outline: 1px solid #3F51B5; }
+
+.field-validation-error {
+  display: block;
+  margin-bottom: 10px;
+  color: #ff6334; }
 
 input[type="radio"] {
   display: none !important; }
@@ -63,6 +65,9 @@ input[type="radio"] {
   input[type="radio"]:checked + label > span {
     background: #727272;
     box-shadow: 0 0 6px #727272; }
+
+input {
+  margin-bottom: 15px; }
 
 .play-btn {
   background-color: #448AFF;
@@ -94,8 +99,9 @@ header {
       header.main input[type="search"]:focus {
         outline: none; }
     header.main a {
-      color: #fff;
-      display: block; }
+      display: block;
+      line-height: 40px;
+      font-size: 16px; }
 
 .main-menu > ul {
   margin: 0; }
@@ -103,30 +109,6 @@ header {
     display: inline-block;
     position: relative;
     padding: 0 5px; }
-
-.user-submenu > a > span:nth-of-type(1) {
-  border: 1px solid #fff;
-  display: inline-block;
-  border-radius: 50%;
-  position: absolute;
-  height: 32px;
-  width: 32px;
-  font-size: 22px; }
-  .user-submenu > a > span:nth-of-type(1) > img {
-    width: 22px;
-    height: 22px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -.5em;
-    margin-top: -.5em; }
-
-.user-submenu > a > span:nth-of-type(2) {
-  display: inline-block;
-  padding: 7px 10px 7px 45px; }
-
-.user-submenu:hover {
-  opacity: .8; }
 
 .main-logo > h1 {
   margin: 0;
@@ -151,6 +133,16 @@ header {
 .audio-avatar {
   background-size: cover;
   height: 100%; }
+
+.login {
+  top: 50%;
+  margin: -.5em auto auto;
+  max-width: 520px; }
+  .login input[type="submit"] {
+    float: right; }
+  .login input[type="checkbox"] {
+    margin-left: 5px;
+    vertical-align: middle; }
 
 .profile-header {
   background-repeat: no-repeat;

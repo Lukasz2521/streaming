@@ -1,23 +1,46 @@
-﻿
+﻿@using streaming_inż.Helpers
+@using Microsoft.AspNet.Identity;
+
 <div class="main-logo col-md-2">
-    <h1><a href="#"><img src="assets/img/sound-waves.png" alt=""></a></h1>
+    <h1><a href="#"><img src="@Helpers.GetImage("sound-waves.png")" alt=""></a></h1>
 </div>
 <div class="main-search col-md-4">
     <input type="search" name="" value="" placeholder="Find song or user">
 </div>
 <div class="main-menu col-md-5">
     <ul>
-        <li>
-            <a href="#">upload</a>
-        </li>
-        <li class="user-submenu">
-            <a href="#">
-                <span><img src="assets/img/avatar.png" alt=""></span>
-                <span>Lukasz Radecki</span>
-            </a>
-        </li>
-        <li>
-            <a id="login-btn" href="#">Login / Rejestracja</a>
-        </li>
+        @{
+            if(User.Identity.IsAuthenticated)
+            {
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">Ulubione</a>
+                </li>
+                <li class="user-submenu">
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Łukasz Radecki
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">Ustawienia</a></li>
+                            <li><a href="#">Upload</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                @Html.ActionLink("Wyloguj", "LogOff", "Account")
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            }
+            else
+            {
+                <li>
+                    @Html.ActionLink("Login / Rejestracja" ,"Login", "Account", new { @id = "login-btn" })
+                </li>
+            }
+        }
     </ul>
 </div>

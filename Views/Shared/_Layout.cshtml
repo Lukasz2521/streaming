@@ -17,21 +17,6 @@
         </div>
     </header>
     <div class="container-fluid body-content">
-        <div id="login-popup" class="modal fade login-popup"  tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <form class="form-horizontal" action="/" method="post">
-                            <input class="form-control" type="text" name="name" value="" placeholder="Nazwa użytkownika" />
-                            <input class="form-control" type="text" name="name" value="" placeholder="hasło" />
-                            @Html.ActionLink("Zarejestruj się!", "Register", "Account",null , new { @class = "register-link" })
-                            <input class="btn btn-default login-btn" type="submit" name="name" value="Zaloguj" />
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         @RenderBody()
         <footer>
            

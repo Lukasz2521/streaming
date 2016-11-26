@@ -86,3 +86,7 @@ C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\
 C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Migrations.Changeregistermodel2.resources
 C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Migrations.Removetable.resources
 C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.csprojResolveAssemblyReference.cache
+C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\bin\NAudio.dll
+C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\bin\NAudio.xml
+C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Migrations.AddSongandCategorytables.resources
+C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Migrations.AddSongandCategorytables2.resources

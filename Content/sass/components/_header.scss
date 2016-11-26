@@ -35,8 +35,9 @@ header {
         }
 
         a {
-            color: #fff;
             display: block;
+            line-height: 40px;
+            font-size: 16px;
         }
     }
 }
@@ -53,38 +54,7 @@ header {
 }
 
 .user-submenu {
-    > a {
-        > span {
-            &:nth-of-type(1) { //TODO - change for background
-                border: 1px solid #fff;
-                display: inline-block;
-                border-radius: 50%;
-                position: absolute;
-                height: 32px;
-                width: 32px;
-                font-size: 22px;
 
-                > img {
-                    width: 22px;
-                    height: 22px;
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    margin-left: -.5em;
-                    margin-top: -.5em;
-                }
-            }
-
-            &:nth-of-type(2) {
-                display: inline-block;
-                padding: 7px 10px 7px 45px;
-            }
-        }
-    }
-
-    &:hover {
-        opacity: .8;
-    }
 }
 
 .main-logo {

@@ -36,10 +36,6 @@ textarea {
     box-sizing: border-box;
 }
 
-main {
-    margin-top: 58px;
-}
-
 .body-content {
     height: 100%;
 }
@@ -56,4 +52,10 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: $primary-color;
   outline: 1px solid $primary-color;
+}
+
+.field-validation-error {
+    display: block;
+    margin-bottom: 10px;
+    color: #ff6334
 }
