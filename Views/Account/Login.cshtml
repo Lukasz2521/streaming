@@ -14,6 +14,10 @@
         @Html.CheckBoxFor(x => x.RememberMe)
 
         <input type="submit" value="Zaloguj" class="btn btn-default" />                  
+        <div>
+            <span>Nie masz konta?</span>
+            @Html.ActionLink("Zarejestruj się!", "Register", "Account")
+        </div>
     }
 </div>
 

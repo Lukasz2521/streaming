@@ -20,5 +20,10 @@ namespace streaming_inż.Controllers
         {   
             return View("UserProfile");
         }
+
+        public ActionResult UploadSong()
+        {
+            return View();
+        }
     }
 }

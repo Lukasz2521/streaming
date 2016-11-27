@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" 3 href="~/Content/bootstrap.min.css" />
+    @Styles.Render("~/Content/dropzonescss")
     <link rel="stylesheet"3 href="~/Content/sass/main.min.css" />
     @Scripts.Render("~/bundles/modernizr")
 
@@ -25,6 +26,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/dropzonescripts")
     @RenderSection("scripts", required: false)
 </body>
 </html>

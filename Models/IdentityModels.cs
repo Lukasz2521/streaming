@@ -40,12 +40,12 @@ namespace streaming_inż.Models
 
 
     public class Song
-    {
+    {   
         public int SongID { get; set; }
-
+        [Required]
         public string Title { get; set; }
         
-        public int Avatar { get; set; }
+        public string AvatarPath { get; set; }
 
         public DataType PublicDate { get; set; }
 

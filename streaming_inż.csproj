@@ -235,6 +235,10 @@
     <Compile Include="Migrations\201611242201478_Add Song and Category tables 2.Designer.cs">
       <DependentUpon>201611242201478_Add Song and Category tables 2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611271752272_update song entities.cs" />
+    <Compile Include="Migrations\201611271752272_update song entities.Designer.cs">
+      <DependentUpon>201611271752272_update song entities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -282,6 +286,14 @@
     <Content Include="Content\sass\components\_modal.scss" />
     <Content Include="Content\sass\components\_login.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\dropzone\basic.css" />
+    <Content Include="Scripts\dropzone\basic.min.css" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.js" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="Scripts\dropzone\dropzone.css" />
+    <Content Include="Scripts\dropzone\dropzone.js" />
+    <Content Include="Scripts\dropzone\dropzone.min.css" />
+    <Content Include="Scripts\dropzone\dropzone.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -333,6 +345,7 @@
     <Content Include="Views\Account\_Menu.cshtml" />
     <Content Include="Views\Profile\UserProfile.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\UploadSong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -366,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611242201478_Add Song and Category tables 2.resx">
       <DependentUpon>201611242201478_Add Song and Category tables 2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611271752272_update song entities.resx">
+      <DependentUpon>201611271752272_update song entities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

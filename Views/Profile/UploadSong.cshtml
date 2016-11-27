@@ -1,0 +1,16 @@
+﻿@model streaming_inż.Models.Song
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @using (Html.BeginForm("UploadSong", "Profile", FormMethod.Post,
+             new { @enctype = "multipart/form-data", @class = "dropzone", @id = "dropzoneForm" }))
+    {
+        @Html.TextBoxFor(x => x.Title, new { @placeholder = "Tytuł utworu" })
+        @Html.TextBoxFor(x => x.AvatarPath)
+        <input name="file" type="file" multiple />
+        <button type="submit" class="btn btn-default">Submit</button>
+    }
+</div>

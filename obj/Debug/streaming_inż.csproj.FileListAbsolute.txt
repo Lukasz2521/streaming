@@ -90,3 +90,4 @@ C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\bin\NAudio
 C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\bin\NAudio.xml
 C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Migrations.AddSongandCategorytables.resources
 C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Migrations.AddSongandCategorytables2.resources
+C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Migrations.updatesongentities.resources

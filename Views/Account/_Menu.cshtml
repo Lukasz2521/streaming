@@ -2,7 +2,11 @@
 @using Microsoft.AspNet.Identity;
 
 <div class="main-logo col-md-2">
-    <h1><a href="#"><img src="@Helpers.GetImage("sound-waves.png")" alt=""></a></h1>
+    <h1>
+        <a href="@Helpers.GetHomePath()">
+            <img src="@Helpers.GetImage("sound-waves.png")" alt="">
+        </a>
+    </h1>
 </div>
 <div class="main-search col-md-4">
     <input type="search" name="" value="" placeholder="Find song or user">
@@ -10,10 +14,10 @@
 <div class="main-menu col-md-5">
     <ul>
         @{
-            if(User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated)
             {
                 <li>
-                    <a href="#">Home</a>
+                    @Html.ActionLink("Home", "Index", "Profile", new { userName = User.Identity.Name }, null)
                 </li>
                 <li>
                     <a href="#">Ulubione</a>
@@ -21,12 +25,14 @@
                 <li class="user-submenu">
                     <div class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Łukasz Radecki
+                            @User.Identity.Name
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="#">Ustawienia</a></li>
-                            <li><a href="#">Upload</a></li>
+                            <li>
+                                @Html.ActionLink("Udostępnij muzykę", "UploadSong", "Profile")
+                            </li>
                             <li role="separator" class="divider"></li>
                             <li>
                                 @Html.ActionLink("Wyloguj", "LogOff", "Account")
@@ -38,7 +44,7 @@
             else
             {
                 <li>
-                    @Html.ActionLink("Login / Rejestracja" ,"Login", "Account", new { @id = "login-btn" })
+                    @Html.ActionLink("Login / Rejestracja", "Login", "Account", new { @id = "login-btn" })
                 </li>
             }
         }
