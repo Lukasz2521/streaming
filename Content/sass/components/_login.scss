@@ -1,7 +1,14 @@
 ﻿.login {
+    background: #2c3c46;
     top: 50%;
     margin: -.5em auto auto;
     max-width: 520px;
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    color: #fff;
 
     input[type="submit"] {
         float: right;

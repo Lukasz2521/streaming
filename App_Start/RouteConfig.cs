@@ -32,6 +32,12 @@ namespace streaming_inż
             );
 
             routes.MapRoute(
+                name: "SongUpload",
+                url: "upload",
+                defaults: new { controller = "Profile", action = "UploadSong" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

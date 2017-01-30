@@ -6,6 +6,7 @@ $accent-color:         #448AFF;
 $primary-text-color:   #212121;
 $secondary-text-color: #727272;
 $divider-color:        #B6B6B6;
+$menu-height: 58px;
 
 header {
     font-family: Nunito;
@@ -16,8 +17,13 @@ header {
         z-index: 10;
         top: 0;
         width: 100%;
-        background: $primary-color-dark;
-        padding: 8px 0;
+        background: -moz-linear-gradient(90deg, #2B3D48 100%, #384C5B 100%);/* FF3.6+ */
+        background: -webkit-gradient(linear, 90deg, color-stop(100%, 2B3D48), color-stop(100%, 384C5B));/* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(90deg, #2B3D48 100%, #384C5B 100%);/* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(90deg, #2B3D48 100%, #384C5B 100%);/* Opera 11.10+ */
+        background: -ms-linear-gradient(90deg, #2B3D48 100%, #384C5B 100%);/* IE10+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1301FE', endColorstr='#F4F60C', GradientType='1'); /* for IE */
+        background: linear-gradient(90deg, #2B3D48 100%, #384C5B 100%);/* W3C */
         color: #fff;
 
         input[type="search"] {
@@ -34,12 +40,43 @@ header {
                 outline: none;
             }
         }
+    }
+}
 
-        a {
+.menu-item {
+
+    & > a {
+        display: block;
+        line-height: 54px;
+        font-size: 17px;
+        color: #485972;
+        -moz-transition: color ease-in-out .3s;
+        -o-transition: color ease-in-out .3s;
+        -webkit-transition: color ease-in-out .3s;
+        transition: color ease-in-out .3s;
+
+        &:after {
+            content: "";
+            background: #A28DF1;
             display: block;
-            line-height: 40px;
-            font-size: 16px;
+            height: 4px;
+            width: 0%;
+            -moz-transition: all ease-in-out .3s;
+            -o-transition: all ease-in-out .3s;
+            -webkit-transition: all ease-in-out .3s;
+            transition: all ease-in-out .3s;
         }
+
+        &:hover {
+            &:after {
+                width: 100%;
+            }
+        }
+    }
+
+    &.text-p2 a:hover {
+        color: #fff;
+        text-shadow: 0 0 0;
     }
 }
 
@@ -49,13 +86,23 @@ header {
        > li {
             display: inline-block;
             position: relative;
-            padding: 0 5px;
+            padding: 0 10px;
         }
     }
 }
 
-.user-submenu {
+.main-search {
+    height: $menu-height;
 
+    & > input {
+        position: absolute;
+        top: 50%;
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
 }
 
 .main-logo {
@@ -64,4 +111,44 @@ header {
         display: inline-block;
         margin-left: 20px;
     }
+
+    a {
+        display: block;
+        line-height: $menu-height;
+    }
+
+    img {
+        vertical-align: baseline;
+    }
+}
+
+.user-submenu {
+    font-size: 17px;
+
+    & .dropdown button {
+        background: transparent;
+        border: none;
+    }
+
+    button:hover {
+        .avatar {
+            fill: #fff;
+        }
+        .user-name { 
+            color: #fff;
+        }
+    }  
+}
+
+.user-name {
+    margin-left: 5px;
+    transition: color ease-in-out .3s;
+}
+
+.avatar {
+    position: absolute;
+    top: -8px;
+    height: 35px;
+    right: -36px;
+    transition: fill ease-out .5s;
 }

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -25,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -203,10 +205,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="DAL\UserSongs.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Infrastructure\SongUpload.cs" />
     <Compile Include="Migrations\201611041736029_InitialCreate.cs" />
     <Compile Include="Migrations\201611041736029_InitialCreate.Designer.cs">
       <DependentUpon>201611041736029_InitialCreate.cs</DependentUpon>
@@ -239,8 +243,53 @@
     <Compile Include="Migrations\201611271752272_update song entities.Designer.cs">
       <DependentUpon>201611271752272_update song entities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701162114142_update model.cs" />
+    <Compile Include="Migrations\201701162114142_update model.Designer.cs">
+      <DependentUpon>201701162114142_update model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701162121086_update.cs" />
+    <Compile Include="Migrations\201701162121086_update.Designer.cs">
+      <DependentUpon>201701162121086_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701162201008_change type of public song.cs" />
+    <Compile Include="Migrations\201701162201008_change type of public song.Designer.cs">
+      <DependentUpon>201701162201008_change type of public song.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701162237417_change relation key between user and song.cs" />
+    <Compile Include="Migrations\201701162237417_change relation key between user and song.Designer.cs">
+      <DependentUpon>201701162237417_change relation key between user and song.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701162239593_Remove unused field from song.cs" />
+    <Compile Include="Migrations\201701162239593_Remove unused field from song.Designer.cs">
+      <DependentUpon>201701162239593_Remove unused field from song.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701181800577_add key to user table.cs" />
+    <Compile Include="Migrations\201701181800577_add key to user table.Designer.cs">
+      <DependentUpon>201701181800577_add key to user table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701181814415_add key to user table #2.cs" />
+    <Compile Include="Migrations\201701181814415_add key to user table #2.Designer.cs">
+      <DependentUpon>201701181814415_add key to user table #2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701181946412_add key to user table #3.cs" />
+    <Compile Include="Migrations\201701181946412_add key to user table #3.Designer.cs">
+      <DependentUpon>201701181946412_add key to user table #3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701182257273_remove index from user table.cs" />
+    <Compile Include="Migrations\201701182257273_remove index from user table.Designer.cs">
+      <DependentUpon>201701182257273_remove index from user table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701182302495_add foreign key for song.cs" />
+    <Compile Include="Migrations\201701182302495_add foreign key for song.Designer.cs">
+      <DependentUpon>201701182302495_add foreign key for song.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701271849325_remove user name.cs" />
+    <Compile Include="Migrations\201701271849325_remove user name.Designer.cs">
+      <DependentUpon>201701271849325_remove user name.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FilesModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -249,6 +298,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\avatar.svg" />
     <Content Include="Content\Images\sound-waves.png" />
     <Content Include="Content\sass\main.css">
       <DependentUpon>main.scss</DependentUpon>
@@ -285,6 +335,7 @@
     <Content Include="Content\sass\pages\_user-profile.scss" />
     <Content Include="Content\sass\components\_modal.scss" />
     <Content Include="Content\sass\components\_login.scss" />
+    <Content Include="Content\sass\base\_forms.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
@@ -383,12 +434,52 @@
     <EmbeddedResource Include="Migrations\201611271752272_update song entities.resx">
       <DependentUpon>201611271752272_update song entities.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701162114142_update model.resx">
+      <DependentUpon>201701162114142_update model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701162121086_update.resx">
+      <DependentUpon>201701162121086_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701162201008_change type of public song.resx">
+      <DependentUpon>201701162201008_change type of public song.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701162237417_change relation key between user and song.resx">
+      <DependentUpon>201701162237417_change relation key between user and song.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701162239593_Remove unused field from song.resx">
+      <DependentUpon>201701162239593_Remove unused field from song.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701181800577_add key to user table.resx">
+      <DependentUpon>201701181800577_add key to user table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701181814415_add key to user table #2.resx">
+      <DependentUpon>201701181814415_add key to user table #2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701181946412_add key to user table #3.resx">
+      <DependentUpon>201701181946412_add key to user table #3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701182257273_remove index from user table.resx">
+      <DependentUpon>201701182257273_remove index from user table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701182302495_add foreign key for song.resx">
+      <DependentUpon>201701182302495_add foreign key for song.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701271849325_remove user name.resx">
+      <DependentUpon>201701271849325_remove user name.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\src\app.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

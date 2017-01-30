@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace streaming_inż.Models
 {
@@ -42,14 +43,15 @@ namespace streaming_inż.Models
     public class Song
     {   
         public int SongID { get; set; }
+
+        public string userId { get; set; }
+
         [Required]
         public string Title { get; set; }
-        
-        public string AvatarPath { get; set; }
 
-        public DataType PublicDate { get; set; }
+        public string PublicDate { get; set; }
 
-        public virtual ApplicationUser Users { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }
     }
@@ -70,6 +72,9 @@ namespace streaming_inż.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        public DbSet<Song> Song { get; set; }
+        public DbSet<Category> Category { get; set; }
 
         public static ApplicationDbContext Create()
         {

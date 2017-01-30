@@ -57,6 +57,7 @@ namespace streaming_inż.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+
             return View("Login");
         }
 
