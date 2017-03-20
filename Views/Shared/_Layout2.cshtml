@@ -7,13 +7,13 @@
     <link rel="stylesheet" 3 href="~/Content/bootstrap.min.css" />
     <link rel="stylesheet" 3 href="~/Content/sass/main.min.css" />
     <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </head>
 <body>
     <div>
         @RenderBody()
     </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

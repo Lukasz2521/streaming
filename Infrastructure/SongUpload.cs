@@ -6,14 +6,29 @@ using System.Web;
 
 namespace streaming_inż.Infrastructure
 {
-    public class SongUpload
+    public class Song
     {
-        public SongUpload() { }
+        public string Title { get; set; }
+
                           
-        public void changeDirectoryWithName()
+        public void PlaySong()
         {
-            File.Move("", "");
+
         }
 
+        public void StopSong()
+        {
+
+        }
+
+        public void uploadSong()
+        {
+
+        }
+
+        public void removeSong()
+        {
+
+        }
     }
 }

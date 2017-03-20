@@ -9,7 +9,11 @@
 <div class="register">
     <div class="registration-wrapper">
 
-        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+        @using (Ajax.BeginForm("Register", "Account", new AjaxOptions()
+            {
+                HttpMethod = "POST"
+             
+        }))
         {
             @Html.AntiForgeryToken()
 
@@ -27,7 +31,7 @@
         <div>
             @Html.ValidationMessage("");
         </div>
-     </div>
+    </div>
 </div>
 
 @section Scripts {

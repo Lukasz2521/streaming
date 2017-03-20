@@ -9,7 +9,12 @@
     @Styles.Render("~/Content/dropzonescss")
     <link rel="stylesheet"3 href="~/Content/sass/main.min.css" />
     @Scripts.Render("~/bundles/modernizr")
-
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/dropzonescripts")
+    @Scripts.Render("~/bundles/js")
+    @RenderSection("scripts", required: false)
 </head>
 <body>
     <header class="container-fluid main">
@@ -24,9 +29,6 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/dropzonescripts")
-    @RenderSection("scripts", required: false)
+
 </body>
 </html>

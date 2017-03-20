@@ -53,7 +53,9 @@ namespace streaming_inż.DAL
         
         public int getSongTableCount()
         {
-            return context.Song.Count();
+            int songId = context.Song.OrderByDescending(x => x.SongID).FirstOrDefault().SongID;
+
+            return songId;
         }                   
     }
 }

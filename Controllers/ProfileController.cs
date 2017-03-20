@@ -21,12 +21,13 @@ namespace streaming_inż.Controllers
     {
         private UserSongs_DAL userSongs = new UserSongs_DAL();
 
-        // GET: Profile
+
+      // GET: Profile
         [OutputCache(Duration = 60)]
         public ActionResult Index(string userName)
         {
             var allUserSongsModel = userSongs.getAllSongs(User.Identity.GetUserId());
-
+                                                     
             return View(allUserSongsModel);
         }
 
@@ -45,14 +46,22 @@ namespace streaming_inż.Controllers
         public async Task<ActionResult> UploadSong(FileUpload songUpload)
         {
             DateTime songUploadDate = DateTime.Today;
+            
+            if(ModelState.IsValid)
+            {
+                string userId = User.Identity.GetUserId().ToString();
+                await userSongs.saveSongAsync(userId, songUpload.Title, songUploadDate.ToString());
+                int lastAddedSongId = userSongs.getSongTableCount();
+                songUpload.Avatar.SaveAs(Helpers.Helpers.getAvatarPath(userId, lastAddedSongId));
+                songUpload.Song.SaveAs(Helpers.Helpers.getSongPath(userId, lastAddedSongId));
 
-            string userId = User.Identity.GetUserId().ToString();
-            await userSongs.saveSongAsync(userId, songUpload.Title, songUploadDate.ToString());
-            songUpload.Avatar.SaveAs(Helpers.Helpers.getAvatarPath(userId, userSongs.getSongTableCount()));
-            this.SaveFile(22, 22, fileType.song, songUpload.Song);
-            this.SaveFile(22, 22, fileType.avatar, songUpload.Avatar);
-
-            return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(songUpload);
+            }
+    
         }
 
         public void PlaySong()
@@ -74,9 +83,7 @@ namespace streaming_inż.Controllers
             switch (typeOfFile)
             {
                 case fileType.avatar:
-                    {
-                        file.SaveAs(Helpers.Helpers.getAvatarPath(userId.ToString(), songId));
-                    }
+                    file.SaveAs(Helpers.Helpers.getAvatarPath(userId.ToString(), songId));    
                     break;
                 case fileType.song:
                     {
@@ -93,6 +100,5 @@ namespace streaming_inż.Controllers
         }
 
         #endregion
-
     }
 }

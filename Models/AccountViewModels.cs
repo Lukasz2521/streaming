@@ -54,7 +54,7 @@ namespace streaming_inż.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Hasło")]
         public string Password { get; set; }
 
         [Display(Name = "Zapamiętaj mnie?")]
@@ -71,11 +71,11 @@ namespace streaming_inż.Models
         [Required]
         [StringLength(100, ErrorMessage = "{0} musi mieć minimum {2} znaków długości.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Hasło")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Potwierdz hasło")]
         [Compare("Password", ErrorMessage = "Hasła nie są takie same.")]
         public string ConfirmPassword { get; set; }
 

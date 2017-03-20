@@ -6,17 +6,23 @@
 
 <div>
     @using (Html.BeginForm("UploadSong", "Profile", FormMethod.Post,
-    new {
-        @enctype = "multipart/form-data",
-        @class = "dropzone upload-song form-horizontal",
-        @id = "dropzoneForm"
-    }))
+            new
+            {
+                @enctype = "multipart/form-data",
+                @class = "dropzone upload-song form-horizontal",
+                @id = "songUpload"
+            }))
     {
+        @Html.AntiForgeryToken()
         @Html.TextBoxFor(x => x.Title, new { @placeholder = "Tytuł utworu", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Title)
         <label>Dodaj avatar utoru</label>
-        @Html.TextBoxFor(x => x.Avatar, new { @name = "avatar", @type = "file" })
+        @Html.TextBoxFor(x => x.Avatar, new { @name = "avatar", @type = "file", @id="songavatar" })
+        @Html.ValidationMessageFor(x => x.Avatar)
         <label>Dodaj utwór</label>
-        @Html.TextBoxFor(x => x.Song, new { @name = "song", @type = "file" })
+        @Html.TextBoxFor(x => x.Song, new { @type = "file", @id="uploadedsong", @name="uploadedsong" })
+        @Html.ValidationMessageFor(x => x.Song)
         <button type="submit" class="btn btn-default">Submit</button>
     }
 </div>
+

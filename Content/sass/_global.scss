@@ -80,3 +80,8 @@ body::-webkit-scrollbar-thumb {
     color: $grey-p1;
     text-shadow: 0px 2px 3px #000 !important;
 }
+
+input[type="file"],
+label {
+    color: #fff;
+}

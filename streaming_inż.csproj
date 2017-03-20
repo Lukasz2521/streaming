@@ -337,13 +337,13 @@
     <Content Include="Content\sass\components\_login.scss" />
     <Content Include="Content\sass\base\_forms.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\dropzone\basic.css" />
-    <Content Include="Scripts\dropzone\basic.min.css" />
+    <Content Include="Content\sass\vendor\dropzone\basic.css" />
+    <Content Include="Content\sass\vendor\dropzone\basic.min.css" />
     <Content Include="Scripts\dropzone\dropzone-amd-module.js" />
     <Content Include="Scripts\dropzone\dropzone-amd-module.min.js" />
-    <Content Include="Scripts\dropzone\dropzone.css" />
+    <Content Include="Content\sass\vendor\dropzone\dropzone.css" />
     <Content Include="Scripts\dropzone\dropzone.js" />
-    <Content Include="Scripts\dropzone\dropzone.min.css" />
+    <Content Include="Content\sass\vendor\dropzone\dropzone.min.css" />
     <Content Include="Scripts\dropzone\dropzone.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -356,6 +356,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\script.js" />
+    <Content Include="Scripts\src\app.js" />
+    <Content Include="Scripts\src\models\test-model.js" />
+    <Content Include="Scripts\src\views\song-upload.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -400,6 +403,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\src\controllers\" />
+    <Folder Include="Scripts\src\services\" />
+    <Folder Include="Scripts\src\tools\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -467,9 +473,6 @@
     <EmbeddedResource Include="Migrations\201701271849325_remove user name.resx">
       <DependentUpon>201701271849325_remove user name.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="Scripts\src\app.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

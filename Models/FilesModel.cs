@@ -8,11 +8,13 @@ namespace streaming_inż.Models
 {
     public class FileUpload
     {   
-        [Required]
+        [Required(ErrorMessage ="Please enter track name")]
         public string Title { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Please choose avatar")]
         public HttpPostedFileBase Avatar { get; set; }
         
+        [Required(ErrorMessage = "Please choose song")]
         public HttpPostedFileBase Song { get; set; }
     }
 

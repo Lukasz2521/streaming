@@ -32,9 +32,14 @@ namespace streaming_inż.Helpers
 
         public static string getAvatarPath(string userId, int songId)
         {
-            var avatarPath = Path.Combine(@"C:\Users\Łukasz\Desktop\streaming_avatars\", userId + "_" +  songId.ToString());
-
+            string avatarPath = Path.Combine(HttpContext.Current.Server.MapPath("/avatars"), String.Concat(userId, "_", songId.ToString(), ".jpg"));
             return avatarPath;
+        }
+
+        public static string getSongPath(string userId, int songId)
+        {
+            string songPath = Path.Combine(HttpContext.Current.Server.MapPath("/songs"), String.Concat(userId, "_", songId.ToString(), ".mp3"));
+            return songPath;
         }
     }
 }
