@@ -28,7 +28,7 @@ namespace streaming_inż.DAL
                     _song = new Models.UserSongs()
                     {
                         Title = song.Title,
-                        avatarPath = Helpers.Helpers.getAvatarPath(song.userId, song.SongID),
+                        avatarPath = String.Concat("/avatars/", song.userId, "_", song.SongID, ".jpg"),
                         UploadTime = Helpers.Helpers.getTimeStamp(DateTime.Parse(song.PublicDate))
                     };
                     userSongsModel.Add(_song);

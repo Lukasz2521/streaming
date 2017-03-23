@@ -105,6 +105,62 @@ input {
   border-radius: 50%;
   border: none; }
 
+.control {
+  border: 5px solid #448AFF;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  font-size: 0;
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer; }
+
+.control,
+.control .left,
+.control .right,
+.control:before {
+  display: inline-block;
+  vertical-align: middle;
+  transition: border 0.4s, width 0.4s, height 0.4s, margin 0.4s;
+  transition-tiomig-function: cubic-bezier(1, 0, 0, 1); }
+
+.control:before {
+  content: "";
+  height: 0; }
+
+.control.pause .left,
+.control.pause .right {
+  margin: 0;
+  border-left: 13px solid #448AFF;
+  border-top: 0 solid transparent;
+  border-bottom: 0 solid transparent;
+  height: 32px; }
+
+.control.pause .left {
+  border-right: 6px solid transparent; }
+
+.control.play .left {
+  margin-left: 0;
+  border-left: 18px solid #448AFF;
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  border-right: 0 solid transparent;
+  height: 32px; }
+
+.control.play .right {
+  margin: 0;
+  border-left: 18px solid #448AFF;
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  height: 0; }
+
+.control:hover {
+  border-color: #448AFF; }
+
+.control:hover .left,
+.control:hover .right {
+  border-left-color: #448AFF; }
+
 .btn-p1 {
   color: #fff;
   display: block;
@@ -254,8 +310,7 @@ header {
   overflow: hidden;
   background: #1F2C34;
   color: #fff;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-left: 0;
   box-shadow: 0 0 15px #000; }
   .single-audio .song-owner {
     display: inline-block;
@@ -266,7 +321,8 @@ header {
     position: absolute; }
 
 .music-details {
-  position: relative; }
+  position: relative;
+  margin-top: 15px; }
 
 .audio-avatar {
   background-size: cover;

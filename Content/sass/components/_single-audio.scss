@@ -6,8 +6,7 @@
     overflow: hidden;
     background: #1F2C34;
     color: #fff;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-left: 0;
     box-shadow: 0 0 15px #000;
 
     .song-owner {
@@ -22,9 +21,12 @@
 
 .music-details {
     position: relative;
+    margin-top: 15px;
 }
 
 .audio-avatar {
     background-size: cover;
     height: 100%;
 }
+
+

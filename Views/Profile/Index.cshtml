@@ -8,15 +8,17 @@
     <div class="row">
         @if (Model.Count > 0)
         {
-            @foreach (var song in Model)
+            foreach (var song in Model)
             {
                 <section class="col-md-12 single-audio">
                     <div class="col-md-4 col-sm-4 audio-avatar" style="background-image: url('@song.avatarPath');">
 
                     </div>
-                    <div class="col-md-7 col-sm-7">
-                        <div class="music-details">
-                            <button class="play-btn" title="Play"></button>
+                    <div class="col-md-7 col-sm-7 music-details">
+                        <div>
+                            <button class="control play" title="Play">
+                                <span class="left"></span><span class="right"></span>
+                            </button>
                             <span class="song-owner"><a href="#">@song.UserName</a></span>
                         </div>
                         <h1 class="song-title">@song.Title</h1>
@@ -27,4 +29,15 @@
         }
     </div>
 </article>
+<script>
+    $('.control').on('mousedown', function () {
+        $(this).toggleClass('pause play');
+    });
+
+    $(document).on('keyup', function (e) {
+        if (e.which == 32) {
+            $('.control').toggleClass('pause play');
+        }
+    });
+</script>
 
