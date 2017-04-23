@@ -1,0 +1,108 @@
+﻿.song-player {
+    background: #fff;
+    box-shadow: 0 -1px 5px $grey-p1;
+    bottom: 0;
+    height: 50px;
+    position: fixed;
+    width: 100%;
+    right: 0;
+
+    .player-control {
+        float: left;
+        height: 100%;
+        display: inline-block;
+    }
+
+    .wrapper {
+        width: 100%;
+        text-align: center;
+        margin-top: 1em;
+    }
+
+    [class^="icon-"] {
+        font-size: 25px;
+        color: $grey-p1;
+        padding: 0 5px;
+        -moz-transition: all ease-in .3s;
+        -o-transition: all ease-in .3s;
+        -webkit-transition: all ease-in .3s;
+        transition: all ease-in .3s;
+
+        &:hover {
+            cursor: pointer;
+            color: $accent-color;
+        }
+    }
+}
+
+.progress-container {
+    display: inline-block;
+    height: 100%;
+    position: relative;
+
+    .ui-slider {
+        height: 4px;
+        background: $grey-p1;
+        margin: 25px auto;
+        position: relative;
+    }
+
+    .ui-slider-handle {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: $grey-p1;
+        border-radius: 50%;
+        top: -6px;
+    }
+}
+
+.volume-container {
+    display: inline-block;
+    float: right;
+    height: 100%;
+    position: relative;
+
+    .ui-slider {
+        position: absolute;
+        background: $grey-p1;
+        height: 120px;
+        width: 4px;
+        bottom: 18px;
+        left: 50%;
+    }
+
+    .ui-slider-handle {
+        bottom: 100%;
+        left: -6px;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: $grey-p1;
+        border-radius: 50%;
+    }
+
+    .wrapper {
+        position: absolute;
+        bottom: 50px;
+        border: 1px solid $grey-p1;
+        border-bottom-color: transparent;
+        background: #fff;
+        height: 163px;
+        width: 42px;
+        opacity: 1;
+    }
+
+    .icon-speaker {
+        height: 50px;
+        padding-top: 15px;
+    }
+
+    .volume-control {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+}

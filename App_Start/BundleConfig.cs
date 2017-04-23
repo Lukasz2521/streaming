@@ -9,7 +9,8 @@ namespace streaming_inż
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery-ui-{version}.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -36,7 +37,9 @@ namespace streaming_inż
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
-                "~/Scripts/script.js"
+                 "~/Scripts/Howler.js",
+                "~/Scripts/script.js",
+                "~/Scripts/Player.js"
                 ));
         }
     }

@@ -13,6 +13,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using streaming_inż.DAL;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace streaming_inż.Controllers
 {
@@ -58,20 +60,22 @@ namespace streaming_inż.Controllers
                 return RedirectToAction("Index", "Home");
             }
             else
-            {
+            { 
                 return View(songUpload);
             }
     
         }
 
+        public void PlaySongAsync()
+        {
+            Thread song = new Thread(this.PlaySong);
+        }
+
         public void PlaySong()
         {
             IWavePlayer waveOutDevice;
-            AudioFileReader audioFileReader;
-
-            waveOutDevice = new WaveOut();
-           // var songPath = Helpers.Helpers.GetHomePath() + "/Music/buka.mp3";
-            audioFileReader = new AudioFileReader("buka.mp3");
+            waveOutDevice = new WaveOutEvent();
+            var audioFileReader = new Mp3FileReader(@"\songs\30852a05-bb23-4936-92b9-751667b73986_31.mp3");
             waveOutDevice.Init(audioFileReader);
             waveOutDevice.Play();
         }

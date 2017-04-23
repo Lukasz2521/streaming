@@ -20,6 +20,8 @@ namespace streaming_inż.Models
 
     public class UserSongs
     {
+        public string SongId { get; set; }
+
         public string UserName { get; set; }
 
         public string Title { get; set; }

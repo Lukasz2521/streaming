@@ -7,12 +7,13 @@
 @import "base/buttons";
 @import "base/forms";
 
+@import "components/modal";
 @import "components/header";
 @import "components/footer";
 @import "components/single-audio";
-@import "components/_login";
+@import "components/login";
+@import "components/song-player";
 
 @import "pages/user-profile";
 @import "pages/registration";
 @import "pages/main";
-@import "components/_modal";

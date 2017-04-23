@@ -12,7 +12,6 @@ html {
   height: 100%; }
 
 body {
-  background: #1F2C34;
   overflow-x: hidden;
   font-family: 'Nunito';
   min-height: 100%;
@@ -35,7 +34,7 @@ textarea {
 .body-content {
   margin-top: 70px;
   background: #2C3C46;
-  box-shadow: 0 0 12px #000;
+  box-shadow: 0 0 12px #585972;
   border-radius: 6px; }
 
 body::-webkit-scrollbar {
@@ -75,6 +74,38 @@ body::-webkit-scrollbar-thumb {
 input[type="file"],
 label {
   color: #fff; }
+
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?6ta7qr");
+  src: url("../fonts/icomoon.eot?6ta7qr#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?6ta7qr") format("truetype"), url("../fonts/icomoon.woff?6ta7qr") format("woff"), url("../fonts/icomoon.svg?6ta7qr#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icon-"], [class*=" icon-"] {
+  display: inline-block !important;
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-speaker:before {
+  content: "\e903"; }
+
+.icon-next:before {
+  content: "\e900"; }
+
+.icon-back:before {
+  content: "\e901"; }
+
+.icon-play-button:before {
+  content: "\e902"; }
 
 input[type="radio"] {
   display: none !important; }
@@ -189,6 +220,16 @@ input {
 .upload-song {
   max-width: 500px;
   margin: 85px auto; }
+
+.login-popup .form-control {
+  margin: 15px auto; }
+
+.login-popup .login-btn,
+.login-popup .register-link {
+  margin-top: 15px; }
+
+.login-popup .register-link {
+  float: right; }
 
 header {
   font-family: Nunito;
@@ -345,6 +386,88 @@ header {
     margin-left: 5px;
     vertical-align: middle; }
 
+.song-player {
+  background: #fff;
+  box-shadow: 0 -1px 5px #585972;
+  bottom: 0;
+  height: 50px;
+  position: fixed;
+  width: 100%;
+  right: 0; }
+  .song-player .player-control {
+    float: left;
+    height: 100%;
+    display: inline-block; }
+  .song-player .wrapper {
+    width: 100%;
+    text-align: center;
+    margin-top: 1em; }
+  .song-player [class^="icon-"] {
+    font-size: 25px;
+    color: #585972;
+    padding: 0 5px;
+    -moz-transition: all ease-in .3s;
+    -o-transition: all ease-in .3s;
+    -webkit-transition: all ease-in .3s;
+    transition: all ease-in .3s; }
+    .song-player [class^="icon-"]:hover {
+      cursor: pointer;
+      color: #448AFF; }
+
+.progress-container {
+  display: inline-block;
+  height: 100%;
+  position: relative; }
+  .progress-container .ui-slider {
+    height: 4px;
+    background: #585972;
+    margin: 25px auto;
+    position: relative; }
+  .progress-container .ui-slider-handle {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #585972;
+    border-radius: 50%;
+    top: -6px; }
+
+.volume-container {
+  display: inline-block;
+  float: right;
+  height: 100%;
+  position: relative; }
+  .volume-container .ui-slider {
+    position: absolute;
+    background: #585972;
+    height: 120px;
+    width: 4px;
+    bottom: 18px;
+    left: 50%; }
+  .volume-container .ui-slider-handle {
+    bottom: 100%;
+    left: -6px;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #585972;
+    border-radius: 50%; }
+  .volume-container .wrapper {
+    position: absolute;
+    bottom: 50px;
+    border: 1px solid #585972;
+    border-bottom-color: transparent;
+    background: #fff;
+    height: 163px;
+    width: 42px;
+    opacity: 1; }
+  .volume-container .icon-speaker {
+    height: 50px;
+    padding-top: 15px; }
+  .volume-container .volume-control {
+    display: none; }
+    .volume-container .volume-control.active {
+      display: block; }
+
 .profile-header {
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -433,14 +556,4 @@ main.main {
   margin-left: 50%;
   margin-top: 24%;
   transform: translate(-50%, -50%); }
-
-.login-popup .form-control {
-  margin: 15px auto; }
-
-.login-popup .login-btn,
-.login-popup .register-link {
-  margin-top: 15px; }
-
-.login-popup .register-link {
-  float: right; }
 

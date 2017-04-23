@@ -1,34 +1,48 @@
-﻿$(function () {
-    $('#login-btn').click(function () {
-        $('#login-popup').modal();
-    });
+﻿//$(function () {
+//    $('.control').on('mousedown', function () {
+//        $(this).toggleClass('pause play');
+//    });
 
-    $.validator.addMethod('isValidSongExtension', function (value, element) {
-        if (value == '')
-            return true;
-        var extension = value.substr((value.lastIndexOf('.'))).toUpperCase();
-        return extension === ".MP3";
-    });
+//    $(document).on('keyup', function (e) {
+//        if (e.which == 32) {
+//            $('.control').toggleClass('pause play');
+//        }
+//    });
 
-    $.validator.addMethod('isValidAvatarExtension', function (value, element) {
-        if (value == '')
-            return true;
-        var extension = value.substr((value.lastIndexOf('.'))).toUpperCase();
-       // $.inArray(extension, ".JPG") > -1);
-        return extension === ".JPG";
-    });
+//    $('.control').eq(1).click(function () {
+//        playSong();
+//    });
 
-    $('#uploadedsong').rules('add', {
-        isValidSongExtension: true,
-        messages: {
-            isValidSongExtension: 'Invalid file extension. File must have .mp3 extension.'
-        }
-    });
+//    $('#login-btn').click(function () {
+//        $('#login-popup').modal();
+//    });
 
-    $('#songavatar').rules('add', {
-        isValidAvatarExtension: true,
-        messages: {
-            isValidAvatarExtension: 'Invalid file extension. File must have .jpg extension.'
-        }
-    });
-});
+//    $.validator.addMethod('isValidSongExtension', function (value, element) {
+//        if (value == '')
+//            return true;
+//        var extension = value.substr((value.lastIndexOf('.'))).toUpperCase();
+//        return extension === ".MP3";
+//    });
+
+//    $.validator.addMethod('isValidAvatarExtension', function (value, element) {
+//        if (value == '')
+//            return true;
+//        var extension = value.substr((value.lastIndexOf('.'))).toUpperCase();
+//       // $.inArray(extension, ".JPG") > -1);
+//        return extension === ".JPG";
+//    });
+
+//    $('#uploadedsong').rules('add', {
+//        isValidSongExtension: true,
+//        messages: {
+//            isValidSongExtension: 'Invalid file extension. File must have .mp3 extension.'
+//        }
+//    });
+
+//    $('#songavatar').rules('add', {
+//        isValidAvatarExtension: true,
+//        messages: {
+//            isValidAvatarExtension: 'Invalid file extension. File must have .jpg extension.'
+//        }
+//    });
+//});

@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-md-7 col-sm-7 music-details">
                         <div>
-                            <button class="control play" title="Play">
+                            <button onclick="Song.playCurrent(this)" class="control play" title="Play" data-id="30852a05-bb23-4936-92b9-751667b73986_31">
                                 <span class="left"></span><span class="right"></span>
                             </button>
                             <span class="song-owner"><a href="#">@song.UserName</a></span>
@@ -27,17 +27,11 @@
                 </section>
             }
         }
+        else
+        {
+            <div>Nie dodałeś żadnych utworów. Zrób to teraz!</div>
+        }
     </div>
 </article>
-<script>
-    $('.control').on('mousedown', function () {
-        $(this).toggleClass('pause play');
-    });
-
-    $(document).on('keyup', function (e) {
-        if (e.which == 32) {
-            $('.control').toggleClass('pause play');
-        }
-    });
-</script>
+@Html.Partial("_songPlayer")
 
