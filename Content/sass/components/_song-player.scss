@@ -1,11 +1,20 @@
-﻿.song-player {
+﻿.audio-container {
+    margin: 30px 0;
+}
+
+.song-player {
     background: #fff;
     box-shadow: 0 -1px 5px $grey-p1;
-    bottom: 0;
-    height: 50px;
+    bottom: -60px;
+    max-height: 110px;
     position: fixed;
     width: 100%;
     right: 0;
+    transition: bottom ease-in-out .35s;
+
+    &.show-extract {
+        bottom: 0;
+    }
 
     .player-control {
         float: left;
@@ -35,6 +44,13 @@
     }
 }
 
+.song-time {
+    font-size: 15px;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+}
+
 .progress-container {
     display: inline-block;
     height: 100%;
@@ -59,7 +75,6 @@
 
 .volume-container {
     display: inline-block;
-    float: right;
     height: 100%;
     position: relative;
 

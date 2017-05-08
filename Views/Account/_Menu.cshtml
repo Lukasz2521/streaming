@@ -1,15 +1,18 @@
-﻿@using streaming_inż.Helpers
-@using Microsoft.AspNet.Identity;
+﻿@using Microsoft.AspNet.Identity;
 
 <div class="main-logo col-md-2">
     <h1>
-        <a href="@Helpers.GetHomePath()">
-            <img src="@Helpers.GetImage("sound-waves.png")" alt="">
+        <a href="/">
+            <img src="@Helpers.GetImage("sound-waves.png")" alt="" />
         </a>
     </h1>
 </div>
 <div class="main-search col-md-4">
-    <input type="search" name="" value="" placeholder="Find song or user">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <input id="findAuthorSong" type="search" placeholder="Find song or user" />   
+    }
 </div>
 <div class="main-menu col-md-5">
     <ul>
@@ -37,7 +40,7 @@
 			                         M164.6,107.3c0-0.3,0.1-0.6,0.1-0.8c3.3-71.7,54.2-79.4,76-79.4h0.4c0.2,0,0.5,0,0.8,0c27,0.6,72.9,11.6,76,79.4
 			                        c0,0.3,0,0.6,0.1,0.8c0.1,0.7,7.1,68.7-24.7,104.5c-12.6,14.2-29.4,21.2-51.5,21.4c-0.2,0-0.3,0-0.5,0l0,0c-0.2,0-0.3,0-0.5,0
 			                        c-22-0.2-38.9-7.2-51.4-21.4C157.7,176.2,164.5,107.9,164.6,107.3z" />
-                                                    <path d="M446.8,383.6c0-0.1,0-0.2,0-0.3c0-0.8-0.1-1.6-0.1-2.5c-0.6-19.8-1.9-66.1-45.3-80.9c-0.3-0.1-0.7-0.2-1-0.3
+                            <path d="M446.8,383.6c0-0.1,0-0.2,0-0.3c0-0.8-0.1-1.6-0.1-2.5c-0.6-19.8-1.9-66.1-45.3-80.9c-0.3-0.1-0.7-0.2-1-0.3
 			                        c-45.1-11.5-82.6-37.5-83-37.8c-6.1-4.3-14.5-2.8-18.8,3.3c-4.3,6.1-2.8,14.5,3.3,18.8c1.7,1.2,41.5,28.9,91.3,41.7
 			                        c23.3,8.3,25.9,33.2,26.6,56c0,0.9,0,1.7,0.1,2.5c0.1,9-0.5,22.9-2.1,30.9c-16.2,9.2-79.7,41-176.3,41
 			                        c-96.2,0-160.1-31.9-176.4-41.1c-1.6-8-2.3-21.9-2.1-30.9c0-0.8,0.1-1.6,0.1-2.5c0.7-22.8,3.3-47.7,26.6-56

@@ -24,18 +24,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-pause:before {
+  content: "\e904";
+}
 .icon-speaker:before {
   content: "\e903";
 }
-
 .icon-next:before {
   content: "\e900";
 }
-
 .icon-back:before {
   content: "\e901";
 }
-
 .icon-play-button:before {
   content: "\e902";
 }

@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.Mvc;
 using NAudio;
 using NAudio.Wave;
-using streaming_inż.Helpers;
 using streaming_inż.Models;
 using System.IO;
 using Microsoft.AspNet.Identity;
@@ -21,17 +20,18 @@ namespace streaming_inż.Controllers
     [Authorize]
     public class ProfileController : Controller
     {
-        private UserSongs_DAL userSongs = new UserSongs_DAL();
+        private SongRepository song = new SongRepository();
 
 
       // GET: Profile
         [OutputCache(Duration = 60)]
         public ActionResult Index(string userName)
         {
-            var allUserSongsModel = userSongs.getAllSongs(User.Identity.GetUserId());
+            var allUserSongsModel = song.getAllUserSongs(User.Identity.GetUserId());
                                                      
             return View(allUserSongsModel);
         }
+
 
         public ActionResult UserProfile(int userId)
         {
@@ -47,15 +47,15 @@ namespace streaming_inż.Controllers
         [HttpPost]
         public async Task<ActionResult> UploadSong(FileUpload songUpload)
         {
-            DateTime songUploadDate = DateTime.Today;
-            
-            if(ModelState.IsValid)
+            string songUploadDate = DateTime.Now.ToString("dd.MM.yyy");
+
+            if (ModelState.IsValid)
             {
                 string userId = User.Identity.GetUserId().ToString();
-                await userSongs.saveSongAsync(userId, songUpload.Title, songUploadDate.ToString());
-                int lastAddedSongId = userSongs.getSongTableCount();
-                songUpload.Avatar.SaveAs(Helpers.Helpers.getAvatarPath(userId, lastAddedSongId));
-                songUpload.Song.SaveAs(Helpers.Helpers.getSongPath(userId, lastAddedSongId));
+                await song.saveSongAsync(userId, songUpload.Title, songUploadDate.ToString());
+                int lastAddedSongId = song.getSongTableCount();
+                songUpload.Avatar.SaveAs(Helpers.getAvatarPath(userId, lastAddedSongId));
+                songUpload.Song.SaveAs(Helpers.getSongPath(userId, lastAddedSongId));
 
                 return RedirectToAction("Index", "Home");
             }
@@ -65,19 +65,10 @@ namespace streaming_inż.Controllers
             }
     
         }
-
-        public void PlaySongAsync()
+        
+        public void extractSong(ExtractFile file)
         {
-            Thread song = new Thread(this.PlaySong);
-        }
-
-        public void PlaySong()
-        {
-            IWavePlayer waveOutDevice;
-            waveOutDevice = new WaveOutEvent();
-            var audioFileReader = new Mp3FileReader(@"\songs\30852a05-bb23-4936-92b9-751667b73986_31.mp3");
-            waveOutDevice.Init(audioFileReader);
-            waveOutDevice.Play();
+            song.ExtractSampleFromSong(file.cutFrom, file.cutTo, file.songId);
         }
 
         #region Helpers
@@ -87,7 +78,7 @@ namespace streaming_inż.Controllers
             switch (typeOfFile)
             {
                 case fileType.avatar:
-                    file.SaveAs(Helpers.Helpers.getAvatarPath(userId.ToString(), songId));    
+                    file.SaveAs(Helpers.getAvatarPath(userId.ToString(), songId));    
                     break;
                 case fileType.song:
                     {

@@ -10,7 +10,6 @@ namespace streaming_inż.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "streaming_inż.Models.ApplicationDbContext";
         }
 
         protected override void Seed(streaming_inż.Models.ApplicationDbContext context)

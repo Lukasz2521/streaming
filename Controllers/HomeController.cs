@@ -1,4 +1,5 @@
-﻿using System;
+﻿using streaming_inż.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,28 @@ namespace streaming_inż.Controllers
 {
     public class HomeController : Controller
     {
+        private SongRepository song = new SongRepository();
+
         public ActionResult Index()
         {
             return View();
         } 
+
+        [HttpPost]
+        public JsonResult Search(string keyWord)
+        {
+            var matchedWords = song.findByKeyword(keyWord);
+              
+            return Json(matchedWords);
+        }
+
+        public ActionResult SearchResult(string searchedWord)
+        {
+            var matchedSongs = song.getByKeyword(searchedWord);
+            ViewBag.searchedWord = searchedWord;
+
+            return View("SearchResult", matchedSongs);
+        }
 
         public ActionResult UnsignedUser()
         {

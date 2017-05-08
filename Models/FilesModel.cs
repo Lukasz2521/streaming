@@ -18,6 +18,13 @@ namespace streaming_inż.Models
         public HttpPostedFileBase Song { get; set; }
     }
 
+    public class ExtractFile
+    {
+        public string songId { get; set; }
+        public int cutFrom { get; set; }
+        public int cutTo { get; set; }
+    }
+
     public class UserSongs
     {
         public string SongId { get; set; }

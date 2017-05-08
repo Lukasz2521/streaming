@@ -38,6 +38,12 @@ namespace streaming_inż
             );
 
             routes.MapRoute(
+                name: "Search",
+                url: "search/{searchedWord}",
+                defaults: new { controller = "Home", action = "SearchResult" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

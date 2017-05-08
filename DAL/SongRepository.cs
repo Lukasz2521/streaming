@@ -1,20 +1,16 @@
 ﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.IO;
-using NAudio;
-using NAudio.Wave;
 using streaming_inż.Models;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-
+using NAudio.Wave;
 
 namespace streaming_inż.DAL
 {
-    public class Songs_DAL
+    public class SongRepository
     {
         private ApplicationDbContext context = new ApplicationDbContext();
 
@@ -35,7 +31,7 @@ namespace streaming_inż.DAL
             return userSongs;
         }
 
-        public async Task saveSongAsync(string userId , string title, string publicDate)
+        public async Task saveSongAsync(string userId, string title, string publicDate)
         {
             var song = new Song()
             {
@@ -43,34 +39,34 @@ namespace streaming_inż.DAL
                 Title = title,
                 PublicDate = publicDate
             };
-                                            
+
             context.Song.Add(song);
             await context.SaveChangesAsync();
-        }     
-        
+        }
+
         public int getSongTableCount()
         {
             int songId = context.Song.OrderByDescending(x => x.SongID).FirstOrDefault().SongID;
 
             return songId;
-        }  
-        
+        }
+
         public List<string> findByKeyword(string keyWord)
         {
             var matchedWords = context.Song.Where(s => s.Title.Contains(keyWord)).Select(s => s.Title).ToList();
 
             return matchedWords;
-        }  
-        
+        }
+
         public IEnumerable<UserSongs> getByKeyword(string keyWord)
         {
             IEnumerable<UserSongs> matchedSongs = context.Song
                 .Where(s => s.Title.Contains(keyWord))
                 .Select(s => new UserSongs
                 {
-                    SongId = String.Concat( s.userId, "_", s.SongID),
+                    SongId = String.Concat(s.userId, "_", s.SongID),
                     Title = s.Title,
-                    UserName = s.User.UserName, 
+                    UserName = s.User.UserName,
                     avatarPath = String.Concat("/avatars/", s.userId, "_", s.SongID, ".jpg"),
                     UploadTime = s.PublicDate
                 })
@@ -88,7 +84,7 @@ namespace streaming_inż.DAL
                 var endPosition = TimeSpan.FromSeconds(60);
 
                 mp3FileReader.CurrentTime = startPosition;
-                while(mp3FileReader.CurrentTime < endPosition)
+                while (mp3FileReader.CurrentTime < endPosition)
                 {
                     var frame = mp3FileReader.ReadNextFrame();
                     if (frame == null) break;

@@ -1,20 +1,55 @@
-﻿<div class="song-player col-md-12">
+﻿<div id="song-player" class="song-player col-md-12">
     <div class="row">
         <div class="player-control col-md-2">
             <div class="wrapper">
-                <i onclick="Player.skipPrevious();" id="prev" class="icon-back"></i>
-                <i onclick="Player.toggle();" class="icon-play-button"></i>
-                <i onclick="Player.skipNext();" id="next" class="icon-next"></i>
+                <button onclick="Player.skipPrevious();" id="prev">
+                    <i class="icon-back"></i>
+                </button>
+                <button onclick="Player.toggle();">
+                    <i class="icon-play-button"></i>
+                </button>
+                <button onclick="Player.skipNext();" id="next">
+                    <i class="icon-next"></i>
+                </button>
             </div>
         </div>
-        <div class="progress-container col-md-8">
+        <div class="col-md-1">
+            <span class="song-time" id="currentTime">
+            </span>
+        </div>
+        <div class="progress-container col-md-5">
             <div id="player-slider"></div>
         </div>
-        <div class="volume-container col-md-2">
+        <div class="col-md-1">
+            <span class="song-time" id="songDuration">
+            </span>
+        </div>
+        <div class="col-md-1">
+            <button id="extract-btn" class="extract-file btn btn-p2">
+                extract song
+            </button>
+        </div>
+        <div class="volume-container col-md-1">
             <div id="volume-control" class="wrapper volume volume-control">
                 <div id="player-volume"></div>
             </div>
             <i class="icon-speaker volume"></i>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <span class="song-time" id="amount"></span>
+        </div>
+        <div class="progress-container col-md-5">
+            <div id="extract-slider"></div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <button id="download-sample" class="extract-file btn btn-p2">
+                Download sample
+            </button>
+        </div>
+        <div class="col-md-2"></div>
     </div>
 </div>

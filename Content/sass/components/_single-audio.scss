@@ -7,15 +7,19 @@
     background: #1F2C34;
     color: #fff;
     padding-left: 0;
-    box-shadow: 0 0 15px #000;
 
     .song-owner {
-        display: inline-block;
-        margin-left: 12px;
+        display: block;
         line-height: 12px;
-        top: 50%;
-        margin-top: -.5em;
-        position: absolute;
+        padding: 10px 0;
+
+        > a {
+            color: #fff !important;
+        }
+    }
+
+    .song-title {
+        margin-top: 0;
     }
 }
 
@@ -27,6 +31,12 @@
 .audio-avatar {
     background-size: cover;
     height: 100%;
+}
+
+.elapsed-time {
+    background-color: #fff;
+    color: $grey-p1;
+    border: none;
 }
 
 

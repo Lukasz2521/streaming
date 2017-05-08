@@ -1,4 +1,16 @@
 ﻿.upload-song {
     max-width: 500px;
-    margin: 85px auto;
+    margin: 35px auto;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    .field-validation-error {
+        color: $grey-p1;
+    }
+
+}
+
+.__center {
+    text-align: center;
 }

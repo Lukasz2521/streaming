@@ -8,7 +8,7 @@
 }
 
 .control {
-  border: 5px solid $accent-color;
+  background: $grey-p1;
   border-radius: 50%;
   width: 52px;
   height: 52px;
@@ -33,7 +33,7 @@
 .control.pause .left,
 .control.pause .right {
   margin: 0;
-  border-left: 13px solid $accent-color;
+  border-left: 13px solid #fff;
   border-top: 0 solid transparent;
   border-bottom: 0 solid transparent;
   height: 32px;
@@ -42,8 +42,8 @@
   border-right: 6px solid transparent;
 }
 .control.play .left {
-  margin-left: 0;
-  border-left: 18px solid $accent-color;
+  margin-left: 5px;
+  border-left: 18px solid #fff;
   border-top: 18px solid transparent;
   border-bottom: 18px solid transparent;
   border-right: 0 solid transparent;
@@ -51,20 +51,27 @@
 }
 .control.play .right {
   margin: 0;
-  border-left: 18px solid $accent-color;
+  border-left: 18px solid #fff;
   border-top: 18px solid transparent;
   border-bottom: 18px solid transparent;
   height: 0;
 }
 .control:hover {
-  border-color: $accent-color;
+  border-color: #ccc;
 }
 .control:hover .left,
 .control:hover .right {
-  border-left-color: $accent-color;
+  border-left-color: #ccc;
+}
+
+.btn {
+    outline: none !important;
 }
 
 .btn-p1 {
+  border: 2px solid #fff;
+  background: none;
+  outline: none !important;
   color: #fff;
   display: block;
   border-radius: 50px;
@@ -72,14 +79,12 @@
   min-width: 50px;
   text-align: center;
   font-size: 15px;
-  border: none;
   padding: 5px 32px;
+}
 
-  background: -moz-linear-gradient(360deg, #4944CC 9%, #A187F7 65%);/* FF3.6+ */
-  background: -webkit-gradient(linear, 360deg, color-stop(9%, 4944CC), color-stop(65%, A187F7));/* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(360deg, #4944CC 9%, #A187F7 65%);/* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(360deg, #4944CC 9%, #A187F7 65%);/* Opera 11.10+ */
-  background: -ms-linear-gradient(360deg, #4944CC 9%, #A187F7 65%);/* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1301FE', endColorstr='#F4F60C', GradientType='1'); /* for IE */
-  background: linear-gradient(360deg, #4944CC 9%, #A187F7 65%);/* W3C */
+.btn-p2 {
+    border: 1px solid $grey-p1;
+    background: none;
+    color: $grey-p1;
+    margin-top: 7px;
 }
