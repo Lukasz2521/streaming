@@ -4,27 +4,65 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
-    <h1 class="text-p3 __center">Dodaj utwór:</h1>
+<div class="login">
+    <div class="container">
+        <div class="frame">
+            <div class="nav">
+                <ul class "links">
+                    <li class="signin-active"><a class="btn">Dodaj utwór</a></li>
+                </ul>
+            </div>
+            <div>
+                @using (Html.BeginForm("UploadSong", "Profile", FormMethod.Post,
+                        new
+                        {
+                            @enctype = "multipart/form-data",
+                            @class = "dropzone form-signin",
+                            @id = "songUpload"
+                        }))
+                {
+                    @Html.AntiForgeryToken()
+                    <label>Dodaj tytuł utworu</label>
+                    @Html.TextBoxFor(x => x.Title, new { @placeholder = "Tytuł utworu", @class = "form-styling" })
+                    @Html.ValidationMessageFor(x => x.Title)
+                    <label>Dodaj avatar utoru</label>
+                    <label for="songavatar" class="attachment">
+                        <div class="btn-file">
+                            <div class="btn-file__preview"></div>
+                            <div class="btn-file__actions">
+                                <div class="btn-file__actions__item col-xs-12 text-center">
+                                    <div class="btn-file__actions__item--shadow">
+                                        <i class="fa fa-plus fa-lg fa-fw" aria-hidden="true"></i>
+                                        <div class="visible-xs-block"></div>
+                                        Select file
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @Html.TextBoxFor(x => x.Avatar, new { @name = "avatar", @type = "file", @id="songavatar", @class = "form-styling" })
+                        @*<input name="file" type="file" id="fileField">*@
+                    </label>
 
-    @using (Html.BeginForm("UploadSong", "Profile", FormMethod.Post,
-            new
-            {
-                @enctype = "multipart/form-data",
-                @class = "dropzone upload-song form-horizontal",
-                @id = "songUpload"
-            }))
-    {
-        @Html.AntiForgeryToken()
-        @Html.TextBoxFor(x => x.Title, new { @placeholder = "Tytuł utworu", @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.Title)
-        <label>Dodaj avatar utoru</label>
-        @Html.TextBoxFor(x => x.Avatar, new { @name = "avatar", @type = "file", @id="songavatar" })
-        @Html.ValidationMessageFor(x => x.Avatar)
-        <label>Dodaj utwór</label>
-        @Html.TextBoxFor(x => x.Song, new { @type = "file", @id="uploadedsong", @name="uploadedsong" })
-        @Html.ValidationMessageFor(x => x.Song)
-        <button type="submit" class="btn btn-default">Submit</button>
-    }
+                    @Html.ValidationMessageFor(x => x.Avatar)
+                    <label>Dodaj utwór</label>
+                    @Html.TextBoxFor(x => x.Song, new { @type = "file", @id="uploadedsong", @name="uploadedsong", @class = "form-styling" })
+                    @Html.ValidationMessageFor(x => x.Song)
+                    <input type="submit" class="btn-p1" value="Dodaj utwór"/>
+                }
+            </div>
+        </div>
+        <a id="refresh" value="Refresh" onClick="history.go()">
+            <svg class="refreshicon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                 x="0px" y="0px" width="25px" height="25px" viewBox="0 0 322.447 322.447" style="enable-background:new 0 0 322.447 322.447;"
+                 xml:space="preserve">
+            <path d="M321.832,230.327c-2.133-6.565-9.184-10.154-15.75-8.025l-16.254,5.281C299.785,206.991,305,184.347,305,161.224
+                    c0-84.089-68.41-152.5-152.5-152.5C68.411,8.724,0,77.135,0,161.224s68.411,152.5,152.5,152.5c6.903,0,12.5-5.597,12.5-12.5
+                    c0-6.902-5.597-12.5-12.5-12.5c-70.304,0-127.5-57.195-127.5-127.5c0-70.304,57.196-127.5,127.5-127.5
+                    c70.305,0,127.5,57.196,127.5,127.5c0,19.372-4.371,38.337-12.723,55.568l-5.553-17.096c-2.133-6.564-9.186-10.156-15.75-8.025
+                    c-6.566,2.134-10.16,9.186-8.027,15.751l14.74,45.368c1.715,5.283,6.615,8.642,11.885,8.642c1.279,0,2.582-0.198,3.865-0.614
+                    l45.369-14.738C320.371,243.946,323.965,236.895,321.832,230.327z" />
+            </svg>
+        </a>
+    </div>
 </div>
 

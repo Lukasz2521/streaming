@@ -17,9 +17,60 @@
 }
 
 .promo-p2 {
+    min-height: 500px;
+
     h1 {
         margin-top: 75px;
+        margin-bottom: 45px;
         font-weight: 600;
         text-align: center;
+    }
+
+    .thumbnail {
+        padding: 20px;
+
+        h3 {
+            font-weight: 600;
+        }
+
+        h3, p {
+            text-align: center !important;
+        }
+    }
+}
+
+.promo-p3 {
+    min-height: 600px;
+    background-image: url('/Content/Images/promo-p3.jpeg');
+    background-size: cover;
+    background-attachment: fixed;
+    -moz-perspective: 1px;
+    -ms-perspective: 1px;
+    -webkit-perspective: 1px;
+    perspective: 1px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+    h1 {
+        margin-top: 75px;
+        margin-bottom: 45px;
+        text-align: center;
+        text-shadow: 0 0 6px #000;
+    }
+
+    img {
+        width: 100%;
+    }
+}
+
+
+footer {
+    background: #fff;
+    min-height: 75px;
+
+    p {
+        color: $grey-p1;
+        text-align: center;
+        line-height: 75px
     }
 }

@@ -48,7 +48,6 @@ button {
 
 .body-content {
     margin-top: 50px;
-    padding-bottom: 50px;
     border-radius: 6px;
 }
 
@@ -101,4 +100,9 @@ label {
 
 h1 {
     color: #fff;
+}
+
+.padding-reset {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }

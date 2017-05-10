@@ -1,6 +1,4 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@using streaming_inż 
 
 <main class="main">
     <div class="row">
@@ -46,41 +44,62 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-12 promo-p2">
+            <section class="col-md-12 promo-p2">
                 <h1 class="text-p2">Odkryj niespotykane możliwości</h1>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="thumbnail">
-                            <img src="..." alt="...">
+                            <img src="@Helpers.GetImage("network.png")" alt="...">
                             <div class="caption">
                                 <h3>Udostępniaj</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                <p>Dziel się swoją muzyką</p>
+                                <p><a href="#" class="btn btn-default" role="button">Więcej</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="thumbnail">
-                            <img src="..." alt="...">
+                            <img src="@Helpers.GetImage("headphones.png")" alt="...">
                             <div class="caption">
                                 <h3>Słuchaj</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                <p>Odtwarzaj muzyke z dowolnego urządzenia</p>
+                                <p><a href="#" class="btn btn-default" role="button">Więcej</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="thumbnail">
-                            <img src="..." alt="...">
+                            <img src="@Helpers.GetImage("network.png")" alt="...">
                             <div class="caption">
                                 <h3>Pobieraj</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                <p>Pobieraj całe utwory lub fragmenty</p>
+                                <p><a href="#" class="btn btn-default" role="button">Więcej</a></p>
                             </div>
                         </div>
                     </div>
                 </div>
             <div/>
-        </div>
+        </section>
     </div>
 </main>
+<div class="promo-p3">
+    <div class="container">
+        <div class="row">
+            <section class="col-md-12">
+                <h1>Załóż konto i korzystaj z dowolnego urządzenia</h1>
+                <div class="col-md-4 padding-reset">
+                    <img src="@Helpers.GetImage("iPad-PNG-HD.png")" alt="" />
+                </div>
+                <div class="col-md-4 padding-reset">
+                    <img src="@Helpers.GetImage("Apple-IPhone-PNG-Clipart.png")" alt="" />
+                </div>
+                <div class="col-md-4 padding-reset">
+                    <img src="@Helpers.GetImage("leopard.png")" alt="" />
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>Streaming 2017 &copy;</p>
+</footer>

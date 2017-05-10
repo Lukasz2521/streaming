@@ -1,16 +1,95 @@
-﻿.upload-song {
-    max-width: 500px;
-    margin: 35px auto;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+﻿.btn-file {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
 
-    .field-validation-error {
-        color: $grey-p1;
+  &__actions {
+    margin: 0;
+    padding: 0;
+
+    &__item {
+      $el-color: #d3e0e9;
+      $el-border: 3px dashed $el-color;
+      $el-border-radius: 35px;
+
+      padding: $el-border-radius;
+
+      font-size: 1.5em;
+      color: $el-color;
+      cursor: pointer;
+      text-decoration: none;
+
+      border-top: $el-border;
+      border-left: $el-border;
+      border-bottom: $el-border;
+
+      &:first-child {
+        border-top-left-radius: $el-border-radius;
+        border-bottom-left-radius: $el-border-radius;
+      }
+
+      &:last-child {
+        border-top-right-radius: $el-border-radius;
+        border-bottom-right-radius: $el-border-radius;
+        border-right: $el-border;
+      }
+
+      &:hover, &:focus {
+        color: #636b6f;
+        background-color: rgba(211, 224, 233, .1);
+
+        &--shadow {
+          box-shadow: rgb(211, 224, 233) 0 0 60px 15px;
+        }
+      }
+
+      &--shadow {
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+
+        &::before {
+          content: " ";
+          box-shadow: #fff 0 0 60px 40px;
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 100%;
+          z-index: -1;
+        }
+      }
     }
+  }
+  &__preview {
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    border-radius: 35px;
+    background-size: cover;
+    background-position: center;
+  }
 
+  &.active {
+
+  }
 }
 
-.__center {
-    text-align: center;
-}
+  label {
+    &.attachment {
+      width: 100%;
+      .btn-create {
+        & > a, & > div {
+          margin-top: 5px;
+        }
+      }
+      input[type='file'] {
+        display: none;
+      }
+    }
+  }

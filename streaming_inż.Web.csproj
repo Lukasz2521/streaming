@@ -225,7 +225,16 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Apple-IPhone-PNG-Clipart.png" />
+    <Content Include="Content\Images\download.png" />
+    <Content Include="Content\Images\headphones.png" />
+    <Content Include="Content\Images\iPad-PNG-HD.png" />
+    <Content Include="Content\Images\iphone-klein-purple.png" />
+    <Content Include="Content\Images\leopard.png" />
+    <Content Include="Content\Images\Macbook-PNG-Free-Download.png" />
+    <Content Include="Content\Images\network.png" />
     <Content Include="Content\Images\avatar.svg" />
+    <Content Include="Content\Images\promo-p3.jpeg" />
     <Content Include="Content\Images\sound-waves.png" />
     <Content Include="Content\fonts\icomoon.svg" />
     <Content Include="Content\sass\main.css">
@@ -307,14 +316,6 @@
     <Content Include="Content\sass\components\_login.scss" />
     <Content Include="Content\sass\base\_forms.scss" />
     <Content Include="Content\sass\components\_song-player.scss" />
-    <Content Include="Content\sass\vendor\dropzone\basic.css" />
-    <Content Include="Content\sass\vendor\dropzone\basic.min.css" />
-    <Content Include="Scripts\dropzone\dropzone-amd-module.js" />
-    <Content Include="Scripts\dropzone\dropzone-amd-module.min.js" />
-    <Content Include="Content\sass\vendor\dropzone\dropzone.css" />
-    <Content Include="Scripts\dropzone\dropzone.js" />
-    <Content Include="Content\sass\vendor\dropzone\dropzone.min.css" />
-    <Content Include="Scripts\dropzone\dropzone.min.js" />
     <Content Include="Scripts\Howler.js" />
     <Content Include="Content\fonts\icomoon.eot" />
     <Content Include="Content\fonts\icomoon.ttf" />
