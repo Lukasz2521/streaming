@@ -6,31 +6,41 @@ var Song = {
     playCurrent: function (currentSong) {
         if (Player.sound._src) {
             Player.sound.stop();
+            $(this.currentElem).find('.control').removeClass('pause');
+            $(this.currentElem).find('.control').addClass('play');
         }
 
         var _currentSong = $(currentSong);
         this.currentID = _currentSong.attr('data-id');
         this.currentElem = _currentSong.closest('.single-audio');
-        _currentSong.removeClass('play');
-        _currentSong.addClass('pause');
+        this.manageStateOfPlayButton();
         this.play();
     },
     play: function () {
         Player.play();
     },
+    manageStateOfPlayButton: function() {
+       $(this.currentElem).find('.control').removeClass('play');
+       $(this.currentElem).find('.control').addClass('pause');
+    },
     next: function () {
         if ($(this.currentElem).next().length > 0) {
-            $(this.currentElem).removeClass('pause');
+            $(this.currentElem).find('.control').removeClass('pause');
+            $(this.currentElem).find('.control').addClass('play');
             this.currentElem = $(this.currentElem).next();
             this.currentID = $(this.currentElem).find('.control.play').attr('data-id');
+            this.manageStateOfPlayButton();
         } else {
             $('#next').attr('disabled');
         }
     },
     previous: function () {
         if ($(this.currentElem).prev().length > 0) {
+            $(this.currentElem).find('.control').removeClass('pause');
+            $(this.currentElem).find('.control').addClass('play');
             this.currentElem = $(this.currentElem).prev();
             this.currentID = $(this.currentElem).find('.control.play').attr('data-id');
+            this.manageStateOfPlayButton();
         } else {
             $('#prev').attr('disabled');
         }
@@ -159,7 +169,7 @@ var extractSong = {
             }
         });
 
-        $("#amount").text("From: " + $('#extract-slider').slider("values", 0) + " - to: " + $('#extract-slider').slider("values", 1));
+        $("#amount").text("Od: " + $('#extract-slider').slider("values", 0) + " - do: " + $('#extract-slider').slider("values", 1));
     },
     download: function () {
         var extractModel = {

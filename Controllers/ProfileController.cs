@@ -70,30 +70,5 @@ namespace streaming_inż.Controllers
         {
             song.ExtractSampleFromSong(file.cutFrom, file.cutTo, file.songId);
         }
-
-        #region Helpers
-
-        private void SaveFile(int userId, int songId, fileType typeOfFile, HttpPostedFileBase file)
-        {
-            switch (typeOfFile)
-            {
-                case fileType.avatar:
-                    file.SaveAs(Helpers.getAvatarPath(userId.ToString(), songId));    
-                    break;
-                case fileType.song:
-                    {
-
-                    }
-                    break;
-            }
-        }
-
-        enum fileType
-        {
-            song,
-            avatar
-        }
-
-        #endregion
     }
 }

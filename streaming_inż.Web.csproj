@@ -298,6 +298,8 @@
     <Content Include="Content\sass\_global.scss" />
     <Content Include="Content\sass\_main-variables.scss" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="ClassDiagram2.cd" />
+    <Content Include="ClassDiagram3.cd" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

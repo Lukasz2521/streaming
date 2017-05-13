@@ -75,6 +75,14 @@ namespace streaming_inż.DAL
             return matchedSongs;
         }
 
+        public void removeSong(int songId)
+        {
+            Song song  = context.Song.First(s => s.SongID == songId);
+
+            context.Song.Remove(song);
+            context.SaveChanges();
+        }
+
         public void ExtractSampleFromSong(int from, int to, string songID)
         {
             using (var mp3FileReader = new Mp3FileReader(@"\songs\30852a05-bb23-4936-92b9-751667b73986_31.mp3"))
