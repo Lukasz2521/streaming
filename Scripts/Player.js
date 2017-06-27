@@ -128,42 +128,20 @@ var Player = {
     }
 };
 
-var toggleButton = function (selector, showMessage, hideMessage) {
-    this.selector = selector;
-    this.showMessage = showMessage;
-    this.hideMessage = hideMessage;
-    this.state;
-}
-
-toggleButton.prototype.init = function () {
-    var self = this;
-    self.state = false;
-    $(this.selector).click(function () {
-        if (!self.state) {
-            $(self.selector).text(self.hideMessage);
-            $('#song-player').addClass('show-extract');
-            self.state = true;
-        } else {
-            $(self.selector).text(self.showMessage);
-            $('#song-player').removeClass('show-extract');
-            self.state = false;
-        }
-    });
-}
-
-var extractSong = {
+var extract = {
     from: 75,
     to: 150,
+    state: false,
     init: function () {
         var self = this;
         $('#extract-slider').slider({
             range: true,
             animate: "fast",
             min: 0,
-            max: 60, //Player.sound.duration() || 60,
-            values: [75, 150],
+            max: Player.sound.duration(),
+            values: [5, 15],
             slide: function (event, ui) {
-                $("#amount").text("From: " + ui.values[0] + " - to: " + ui.values[1]);
+                $("#amount").text("Od: " + ui.values[0] + " - to: " + ui.values[1]);
                 self.from = ui.values[0];
                 self.to = ui.values[1];
             }
@@ -178,12 +156,26 @@ var extractSong = {
             cutTo: this.to,
         };
 
-        CallController('Profile', 'extractSong', "POST", extractModel, null);
+        CallController('Profile', 'extractSong', "POST", extractModel, null, );
+    },
+    toggleButton: function () {
+        var self = this;
+        $('#extract-btn').click(function () {
+            self.init();            
+
+            if (!self.state) {
+                $('#song-player').addClass('show-extract');
+                self.state = true;
+            } else {
+                $('#song-player').removeClass('show-extract');
+                self.state = false;
+            }
+        });
     }
 };
 
 $(function () {
-    extractSong.init();
+    extract.toggleButton();
 
     Player.volume(50);
 
@@ -194,9 +186,6 @@ $(function () {
            
         },
     });
-
-    var extractButton = new toggleButton('#extract-btn', 'extract song', 'hide extract');
-        extractButton.init();
 
     $('#player-volume').slider({
         orientation: "vertical",
@@ -228,16 +217,32 @@ $(function () {
         }
     });
 
-    $('#download-sample').click(function () {
-        extractSong.download();
+    $('#download-sample').click(function (e) {
+        e.preventDefault();
+
+        var self = this,
+            extractModel = {
+                songId: Song.currentID,
+                cutFrom: extract.from,
+                cutTo: extract.to
+            };
+
+        var callback = function(data) {
+            console.log(data);
+                $(self).attr('href', data);
+            }
+
+        CallController('Profile', 'extractSong', "POST", extractModel, callback);
+
+        return true;
     });
+
 });
 
 var CallController = function (controller, action, Type, args, callback) {
     $.ajax({
         url: '/' + controller + '/' + action,
         type: Type,
-        dataType: 'json',
         data: args,
         success: function (data) {
             callback(data);

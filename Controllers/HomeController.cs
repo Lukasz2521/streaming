@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace streaming_inż.Controllers
 {
@@ -19,14 +20,14 @@ namespace streaming_inż.Controllers
         [HttpPost]
         public JsonResult Search(string keyWord)
         {
-            var matchedWords = song.findByKeyword(keyWord);
+            var matchedWords = song.findByKeyword(keyWord, User.Identity.GetUserId());
               
             return Json(matchedWords);
         }
 
         public ActionResult SearchResult(string searchedWord)
         {
-            var matchedSongs = song.getByKeyword(searchedWord);
+            var matchedSongs = song.getByKeyword(searchedWord, User.Identity.GetUserId());
             ViewBag.searchedWord = searchedWord;
 
             return View("SearchResult", matchedSongs);

@@ -214,6 +214,18 @@
     <Compile Include="Migrations\201705021025452_init.Designer.cs">
       <DependentUpon>201705021025452_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705130958455_add likedSongs table.cs" />
+    <Compile Include="Migrations\201705130958455_add likedSongs table.Designer.cs">
+      <DependentUpon>201705130958455_add likedSongs table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705161913510_update liked song table.cs" />
+    <Compile Include="Migrations\201705161913510_update liked song table.Designer.cs">
+      <DependentUpon>201705161913510_update liked song table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706271855154_update song table.cs" />
+    <Compile Include="Migrations\201706271855154_update song table.Designer.cs">
+      <DependentUpon>201706271855154_update song table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FilesModel.cs" />
@@ -385,6 +397,8 @@
     <Content Include="Views\Profile\UploadSong.cshtml" />
     <Content Include="Views\Shared\_songPlayer.cshtml" />
     <Content Include="Views\Home\SearchResult.cshtml" />
+    <Content Include="Views\Shared\_SongContainer.cshtml" />
+    <Content Include="Views\Shared\_SingleSong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -402,6 +416,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705021025452_init.resx">
       <DependentUpon>201705021025452_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705130958455_add likedSongs table.resx">
+      <DependentUpon>201705130958455_add likedSongs table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705161913510_update liked song table.resx">
+      <DependentUpon>201705161913510_update liked song table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706271855154_update song table.resx">
+      <DependentUpon>201706271855154_update song table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

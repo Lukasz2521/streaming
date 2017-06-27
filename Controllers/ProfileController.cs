@@ -21,9 +21,8 @@ namespace streaming_inż.Controllers
     public class ProfileController : Controller
     {
         private SongRepository song = new SongRepository();
+        
 
-
-      // GET: Profile
         [OutputCache(Duration = 60)]
         public ActionResult Index(string userName)
         {
@@ -62,13 +61,36 @@ namespace streaming_inż.Controllers
             else
             { 
                 return View(songUpload);
-            }
+            }                                  
     
         }
         
-        public void extractSong(ExtractFile file)
+        public string extractSong(ExtractFile file)
         {
-            song.ExtractSampleFromSong(file.cutFrom, file.cutTo, file.songId);
+            song.ExtractSampleFromSong(file);
+            return getExtractedSong(file);
+        }
+
+        public ActionResult GetFavoriteSongs()
+        {
+            song.GetFavoriteSongs(User.Identity.GetUserId().ToString());
+
+            return View("_SongContainer");
+        }
+
+
+        public ActionResult AddFavoriteSong(LikedSong likedSong)
+        {
+
+            return Json(new { });
+        }
+
+        private string getExtractedSong(ExtractFile file)
+        {
+            //byte[] fileBytes = System.IO.File.ReadAllBytes((String.Concat(@"D:\Streaming_Data\Extract\", file.songId, ".mp3")));
+            string fullPath = Path.Combine(String.Concat("http://localhost:62316/extract/", file.songId, ".mp3"));
+ 
+            return fullPath;
         }
     }
 }

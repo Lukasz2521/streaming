@@ -119,6 +119,9 @@ h1 {
 .icon-play-button:before {
   content: "\e902"; }
 
+.icon-like:before {
+  content: "\e905"; }
+
 input[type="radio"] {
   display: none !important; }
   input[type="radio"] + label {
@@ -438,6 +441,15 @@ header {
   background-color: #fff;
   color: #585972;
   border: none; }
+
+.like {
+  position: absolute;
+  right: -45px;
+  top: 5px;
+  display: inline-block;
+  font-size: 24px; }
+  .like:hover {
+    cursor: pointer; }
 
 .login {
   height: 100vh;

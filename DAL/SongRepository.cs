@@ -7,6 +7,7 @@ using System.Web;
 using streaming_inż.Models;
 using Microsoft.AspNet.Identity;
 using NAudio.Wave;
+using System.Web.Mvc;
 
 namespace streaming_inż.DAL
 {
@@ -51,17 +52,19 @@ namespace streaming_inż.DAL
             return songId;
         }
 
-        public List<string> findByKeyword(string keyWord)
+        public List<string> findByKeyword(string keyWord, string userId)
         {
-            var matchedWords = context.Song.Where(s => s.Title.Contains(keyWord)).Select(s => s.Title).ToList();
+            var matchedWords = context.Song
+                .Where(s => s.Title.Contains(keyWord) && s.userId != userId)
+                .Select(s => s.Title).ToList();
 
             return matchedWords;
         }
 
-        public IEnumerable<UserSongs> getByKeyword(string keyWord)
+        public IEnumerable<UserSongs> getByKeyword(string keyWord, string userId)
         {
             IEnumerable<UserSongs> matchedSongs = context.Song
-                .Where(s => s.Title.Contains(keyWord))
+                .Where(s => s.Title.Contains(keyWord) && s.userId != userId)
                 .Select(s => new UserSongs
                 {
                     SongId = String.Concat(s.userId, "_", s.SongID),
@@ -83,13 +86,13 @@ namespace streaming_inż.DAL
             context.SaveChanges();
         }
 
-        public void ExtractSampleFromSong(int from, int to, string songID)
+        public void ExtractSampleFromSong(ExtractFile file)
         {
-            using (var mp3FileReader = new Mp3FileReader(@"\songs\30852a05-bb23-4936-92b9-751667b73986_31.mp3"))
-            using (var writer = File.Create(@"\songs\extract.mp3"))
+            using (var mp3FileReader = new Mp3FileReader(String.Concat(@"D:\Streaming_Data\Songs\", file.songId ,".mp3")))
+            using (var writer = File.Create(String.Concat(@"D:\Streaming_Data\Extract\", file.songId, ".mp3")))
             {
-                var startPosition = TimeSpan.FromSeconds(30);
-                var endPosition = TimeSpan.FromSeconds(60);
+                var startPosition = TimeSpan.FromSeconds(file.cutFrom);
+                var endPosition = TimeSpan.FromSeconds(file.cutTo);
 
                 mp3FileReader.CurrentTime = startPosition;
                 while (mp3FileReader.CurrentTime < endPosition)
@@ -99,6 +102,22 @@ namespace streaming_inż.DAL
                     writer.Write(frame.RawData, 0, frame.RawData.Length);
                 }
             }
+        }
+
+        public IEnumerable<LikedSongs> GetFavoriteSongs(string userId)
+        {
+            var favoriteSongs = context.LikedSongs.Where(s => s.UserId == userId).ToList();
+
+            return favoriteSongs;
+        }
+
+        public async Task AddFavoriteSong(LikedSong likedSong)
+        {
+            context.LikedSongs.Add(new LikedSongs() {
+                SongId = likedSong.SongId,
+                UserId = likedSong.UserId
+            });
+            await context.SaveChangesAsync();
         }
     }
 }

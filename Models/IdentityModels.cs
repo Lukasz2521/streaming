@@ -36,7 +36,7 @@ namespace streaming_inż.Models
 
         public int YearOfBirth { get; set; }
 
-        public virtual ICollection<Song> Songs { get; set; }
+        public virtual ICollection<Song> Songs { get; set; } 
     }
 
 
@@ -51,9 +51,24 @@ namespace streaming_inż.Models
 
         public string PublicDate { get; set; }
 
+        public bool isAccepted { get; set;  }
+
         public virtual ApplicationUser User { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }
+    }
+
+    public class LikedSongs
+    {
+        public int LikedSongsId { get; set; }
+
+        public string UserId { get; set; }
+
+        public string SongId { get; set; } 
+
+        public virtual ApplicationUser User { get; set; }
+
+        public virtual Song Song { get; set; }
     }
 
     public class Category
@@ -74,6 +89,7 @@ namespace streaming_inż.Models
         }
 
         public DbSet<Song> Song { get; set; }
+        public DbSet<LikedSongs> LikedSongs { get; set; }
         public DbSet<Category> Category { get; set; }
 
         public static ApplicationDbContext Create()

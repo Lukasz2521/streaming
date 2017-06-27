@@ -23,7 +23,7 @@
                     @Html.ActionLink("Home", "Index", "Profile", new { userName = User.Identity.Name }, null)
                 </li>
                 <li class="menu-item text-p2">
-                    <a href="#">Ulubione</a>
+                    @Html.ActionLink("Ulubione", "GetFavoriteSongs", "Profile")
                 </li>
                 <li class="user-submenu">
                     <div class="dropdown">

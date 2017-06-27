@@ -84,3 +84,6 @@ C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\
 C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.dll
 C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.pdb
 C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Web.csprojResolveAssemblyReference.cache
+C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Migrations.addlikedSongstable.resources
+C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Migrations.updatelikedsongtable.resources
+C:\Users\Łukasz\documents\visual studio 2015\Projects\streaming_inż\obj\Debug\streaming_inż.Migrations.updatesongtable.resources
