@@ -73,15 +73,20 @@ namespace streaming_inż.Controllers
 
         public ActionResult GetFavoriteSongs()
         {
-            song.GetFavoriteSongs(User.Identity.GetUserId().ToString());
+            var likedSongs = song.GetFavoriteSongs(User.Identity.GetUserId().ToString());
 
-            return View("_SongContainer");
+            return View("_SongContainer", likedSongs);
         }
 
 
-        public ActionResult AddFavoriteSong(LikedSong likedSong)
+        public async Task<ActionResult> AddFavoriteSong(string songId)
         {
-
+            var likedSong = new LikedSong()
+            {
+                UserId = User.Identity.GetUserId(),
+                SongId = int.Parse(songId.Split('_')[1])
+            };
+            await song.AddFavoriteSongAsync(likedSong);
             return Json(new { });
         }
 

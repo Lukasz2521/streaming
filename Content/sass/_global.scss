@@ -106,3 +106,7 @@ h1 {
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
+
+.ui-helper-hidden-accessible > div {
+    display: none;
+}

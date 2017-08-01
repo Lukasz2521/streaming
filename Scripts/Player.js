@@ -45,6 +45,9 @@ var Song = {
             $('#prev').attr('disabled');
         }
     },
+    addToFavourite: function(songId) {
+        CallController('Profile', 'AddFavoriteSong', 'POST', { songId: songId }, null);
+    },
     init: function () {
         this.currentElem = $('.single-audio').eq(0);
         this.currentID = this.currentElem.find('.control.play').attr('data-id');
@@ -156,7 +159,7 @@ var extract = {
             cutTo: this.to,
         };
 
-        CallController('Profile', 'extractSong', "POST", extractModel, null, );
+        CallController('Profile', 'extractSong', "POST", extractModel, null);
     },
     toggleButton: function () {
         var self = this;

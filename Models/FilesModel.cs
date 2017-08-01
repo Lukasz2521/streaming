@@ -40,7 +40,7 @@ namespace streaming_inż.Models
 
     public class LikedSong
     {
-        public string SongId { get; set; }
+        public int SongId { get; set; }
 
         public string UserId { get; set; }
     }

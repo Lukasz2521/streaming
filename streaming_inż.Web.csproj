@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201706271855154_update song table.Designer.cs">
       <DependentUpon>201706271855154_update song table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707041751536_Rebuild liked song.cs" />
+    <Compile Include="Migrations\201707041751536_Rebuild liked song.Designer.cs">
+      <DependentUpon>201707041751536_Rebuild liked song.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FilesModel.cs" />
@@ -425,6 +429,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706271855154_update song table.resx">
       <DependentUpon>201706271855154_update song table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707041751536_Rebuild liked song.resx">
+      <DependentUpon>201707041751536_Rebuild liked song.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

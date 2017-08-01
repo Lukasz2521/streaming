@@ -64,7 +64,7 @@ namespace streaming_inż.Models
 
         public string UserId { get; set; }
 
-        public string SongId { get; set; } 
+        public int SongId { get; set; } 
 
         public virtual ApplicationUser User { get; set; }
 

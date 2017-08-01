@@ -76,11 +76,11 @@ namespace streaming_inż.DAL
                 .ToList();
 
             return matchedSongs;
-        }
+        }     
 
         public void removeSong(int songId)
         {
-            Song song  = context.Song.First(s => s.SongID == songId);
+            Song song = context.Song.First(s => s.SongID == songId);
 
             context.Song.Remove(song);
             context.SaveChanges();
@@ -88,7 +88,7 @@ namespace streaming_inż.DAL
 
         public void ExtractSampleFromSong(ExtractFile file)
         {
-            using (var mp3FileReader = new Mp3FileReader(String.Concat(@"D:\Streaming_Data\Songs\", file.songId ,".mp3")))
+            using (var mp3FileReader = new Mp3FileReader(String.Concat(@"D:\Streaming_Data\Songs\", file.songId, ".mp3")))
             using (var writer = File.Create(String.Concat(@"D:\Streaming_Data\Extract\", file.songId, ".mp3")))
             {
                 var startPosition = TimeSpan.FromSeconds(file.cutFrom);
@@ -104,20 +104,38 @@ namespace streaming_inż.DAL
             }
         }
 
-        public IEnumerable<LikedSongs> GetFavoriteSongs(string userId)
+        public IEnumerable<UserSongs> GetFavoriteSongs(string userId)
         {
-            var favoriteSongs = context.LikedSongs.Where(s => s.UserId == userId).ToList();
+            var favoriteSongs = (from song in context.Song
+                                 join likedSong in context.LikedSongs on song.SongID equals likedSong.SongId
+                                 where likedSong.UserId == userId
+                                 select new UserSongs
+                                 {
+                                     SongId = String.Concat(song.userId, "_", song.SongID),
+                                     Title = song.Title,
+                                     UserName = song.User.UserName,
+                                     avatarPath = String.Concat("/avatars/", song.userId, "_", song.SongID, ".jpg"),
+                                     UploadTime = song.PublicDate
+                                 }).ToList();
 
             return favoriteSongs;
         }
 
-        public async Task AddFavoriteSong(LikedSong likedSong)
+        public async Task AddFavoriteSongAsync(LikedSong likedSong)
         {
-            context.LikedSongs.Add(new LikedSongs() {
-                SongId = likedSong.SongId,
-                UserId = likedSong.UserId
-            });
-            await context.SaveChangesAsync();
+            int likedSongCount = context.LikedSongs.Where(s => s.SongId == likedSong.SongId && s.UserId == likedSong.UserId).Count();
+
+            if(likedSongCount == 0)
+            {
+                var _likedSong = new LikedSongs()
+                {
+                    SongId = likedSong.SongId,
+                    UserId = likedSong.UserId
+                };
+
+                context.LikedSongs.Add(_likedSong);
+                await context.SaveChangesAsync();
+            }
         }
     }
 }
