@@ -21,13 +21,13 @@ namespace streaming_inż.Controllers
     public class ProfileController : Controller
     {
         private SongRepository song = new SongRepository();
-        
+      
 
         [OutputCache(Duration = 60)]
         public ActionResult Index(string userName)
         {
             var allUserSongsModel = song.getAllUserSongs(User.Identity.GetUserId());
-                                                     
+                                         
             return View(allUserSongsModel);
         }
 
@@ -61,8 +61,7 @@ namespace streaming_inż.Controllers
             else
             { 
                 return View(songUpload);
-            }                                  
-    
+            }                                     
         }
         
         public string extractSong(ExtractFile file)
@@ -96,6 +95,13 @@ namespace streaming_inż.Controllers
             string fullPath = Path.Combine(String.Concat("http://localhost:62316/extract/", file.songId, ".mp3"));
  
             return fullPath;
+        }
+
+        public ActionResult GetWaitingSongs()
+        {
+            var likedSongs = 
+
+            return View("_SongContainer", likedSongs);
         }
     }
 }

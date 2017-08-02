@@ -137,5 +137,20 @@ namespace streaming_inż.DAL
                 await context.SaveChangesAsync();
             }
         }
+
+        public IEnumerable<UserSongs> GetWaitingSongs()
+        {
+            var songsToAccept = context.Song.Where(s => s.isAccepted != true)
+                                       .Select(s => new UserSongs()
+                                       {
+                                           SongId = String.Concat(s.userId, "_", s.SongID),
+                                           Title = s.Title,
+                                           UserName = s.User.UserName,
+                                           avatarPath = String.Concat("/avatars/", s.userId, "_", s.SongID, ".jpg"),
+                                           UploadTime = s.PublicDate
+                                       });
+
+            return songsToAccept;
+        }
     }
 }
