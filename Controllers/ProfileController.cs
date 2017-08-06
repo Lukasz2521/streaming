@@ -69,7 +69,7 @@ namespace streaming_inż.Controllers
             song.ExtractSampleFromSong(file);
             return getExtractedSong(file);
         }
-
+        
         public ActionResult GetFavoriteSongs()
         {
             var likedSongs = song.GetFavoriteSongs(User.Identity.GetUserId().ToString());
@@ -91,17 +91,17 @@ namespace streaming_inż.Controllers
 
         private string getExtractedSong(ExtractFile file)
         {
-            //byte[] fileBytes = System.IO.File.ReadAllBytes((String.Concat(@"D:\Streaming_Data\Extract\", file.songId, ".mp3")));
             string fullPath = Path.Combine(String.Concat("http://localhost:62316/extract/", file.songId, ".mp3"));
  
             return fullPath;
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult GetWaitingSongs()
         {
-            var likedSongs = 
+            var waitingSongs = song.GetWaitingSongs();
 
-            return View("_SongContainer", likedSongs);
+            return View("_SongContainer", waitingSongs);
         }
     }
 }

@@ -23,8 +23,14 @@
                                 <h1 class="song-title">@song.Title</h1>
                             </div>
                             <button class="btn btn-primary elapsed-time" type="button">
-                                Uplodad date <span class="badge">@song.UploadTime</span>
+                                Data dodania <span class="badge">@song.UploadTime</span>
                             </button>
+                            if (User.IsInRole("Admin"))
+                            {
+                                <div>
+
+                                </div>
+                            }
                         </div>
                     </section>
                 }

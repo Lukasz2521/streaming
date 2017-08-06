@@ -38,7 +38,8 @@ namespace streaming_inż.DAL
             {
                 userId = userId,
                 Title = title,
-                PublicDate = publicDate
+                PublicDate = publicDate,
+                isAccepted = false
             };
 
             context.Song.Add(song);
@@ -148,7 +149,7 @@ namespace streaming_inż.DAL
                                            UserName = s.User.UserName,
                                            avatarPath = String.Concat("/avatars/", s.userId, "_", s.SongID, ".jpg"),
                                            UploadTime = s.PublicDate
-                                       });
+                                       }).ToList();
 
             return songsToAccept;
         }

@@ -20,7 +20,8 @@
         {
             if (User.IsInRole(Consts.Role_Admin))
             {
-                <li>@Html.ActionLink("Poczekalnia", "GetWaitingSongs", "Profile")</li>
+                <li class="menu-item text-p2">@Html.ActionLink("Poczekalnia", "GetWaitingSongs", "Profile")</li>
+                <li class="menu-item text-p2">@Html.ActionLink("Wyloguj", "LogOff", "Account")</li>
             }
             else
             {
