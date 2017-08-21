@@ -90,6 +90,9 @@ namespace streaming_inż.Controllers
             }
             else
             {
+                if (User.IsInRole("Admin"))
+                    return RedirectToAction("GetWaitingSongs", "Profile");
+
                 return RedirectToAction("Index", "Home");
             }
 

@@ -3,6 +3,8 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@Html.Partial("_Alert")
 <div class="container">
     <article class="col-md-8 audio-container">
         <div class="row">
@@ -25,10 +27,11 @@
                             <button class="btn btn-primary elapsed-time" type="button">
                                 Data dodania <span class="badge">@song.UploadTime</span>
                             </button>
-                            if (User.IsInRole("Admin"))
+                            @if (User.IsInRole("Admin"))
                             {
-                                <div>
-
+                                <div class="song-panel">
+                                    <span class="glyphicon glyphicon-remove remove-song" onclick="Song.remove('@song.SongId')"></span>
+                                    <span class="glyphicon glyphicon-ok add-song" onclick="Song.add('@song.SongId')"></span>
                                 </div>
                             }
                         </div>

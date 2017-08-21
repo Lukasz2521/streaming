@@ -5,12 +5,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using streaming_inż.Common;
 
 namespace streaming_inż.Controllers
 {
     public class HomeController : Controller
     {
-        private SongRepository song = new SongRepository();
+        private ISongRepository _song = new SongRepository();
 
         public ActionResult Index()
         {
@@ -20,14 +21,14 @@ namespace streaming_inż.Controllers
         [HttpPost]
         public JsonResult Search(string keyWord)
         {
-            var matchedWords = song.findByKeyword(keyWord, User.Identity.GetUserId());
+            var matchedWords = _song.findByKeyword(keyWord, User.Identity.GetUserId());
               
             return Json(matchedWords);
         }
 
         public ActionResult SearchResult(string searchedWord)
         {
-            var matchedSongs = song.getByKeyword(searchedWord, User.Identity.GetUserId());
+            var matchedSongs = _song.getByKeyword(searchedWord, User.Identity.GetUserId());
             ViewBag.searchedWord = searchedWord;
 
             return View("SearchResult", matchedSongs);

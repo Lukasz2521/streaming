@@ -51,6 +51,18 @@ var Song = {
     init: function () {
         this.currentElem = $('.single-audio').eq(0);
         this.currentID = this.currentElem.find('.control.play').attr('data-id');
+    },
+    add: function (id) {
+        if(id !== undefined)
+            CallController('Profile', 'extractSong', "POST", extractModel, null);
+    }, 
+    remove: function (songId) {
+        if (songId !== undefined)
+            CallController('Profile', 'RemoveSong', "POST", { songId: songId } , callback);
+
+        function callback(data) {
+            showAlert(data.message);
+        }
     }
 };
 
@@ -256,6 +268,15 @@ var CallController = function (controller, action, Type, args, callback) {
     });
 };
 
+function showAlert(message) {
+    var alert = $('#alert');
+    alert.html("<div class='alert alert-danger'>"+message+"</div>");
+    alert.slideDown();
+
+    setTimeout(function () {
+        alert.slideUp(3000);
+    });
+}
 
 
 

@@ -50,3 +50,19 @@
         cursor: pointer;
     }
 }
+
+.song-panel {
+    float: right;
+
+    .remove-song {
+        color: #ff0000;
+    }
+
+    .add-song {
+        color: #00ff21;
+    }
+
+    & > span:hover {
+        cursor: pointer;
+    }
+}

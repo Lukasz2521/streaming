@@ -87,6 +87,13 @@ h1 {
 .ui-helper-hidden-accessible > div {
   display: none; }
 
+.alert-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%; }
+
 @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon.eot?6ta7qr");
@@ -452,6 +459,15 @@ header {
   display: inline-block;
   font-size: 24px; }
   .like:hover {
+    cursor: pointer; }
+
+.song-panel {
+  float: right; }
+  .song-panel .remove-song {
+    color: #ff0000; }
+  .song-panel .add-song {
+    color: #00ff21; }
+  .song-panel > span:hover {
     cursor: pointer; }
 
 .login {

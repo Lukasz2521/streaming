@@ -14,19 +14,20 @@ using Microsoft.Owin.Security;
 using streaming_inż.DAL;
 using System.Threading;
 using System.Threading.Tasks;
+using streaming_inż.Common;
 
 namespace streaming_inż.Controllers
 {
     [Authorize]
     public class ProfileController : Controller
     {
-        private SongRepository song = new SongRepository();
+        private ISongRepository _song = new SongRepository();
       
 
         [OutputCache(Duration = 60)]
         public ActionResult Index(string userName)
         {
-            var allUserSongsModel = song.getAllUserSongs(User.Identity.GetUserId());
+            var allUserSongsModel = _song.getAllUserSongs(User.Identity.GetUserId());
                                          
             return View(allUserSongsModel);
         }
@@ -51,8 +52,8 @@ namespace streaming_inż.Controllers
             if (ModelState.IsValid)
             {
                 string userId = User.Identity.GetUserId().ToString();
-                await song.saveSongAsync(userId, songUpload.Title, songUploadDate.ToString());
-                int lastAddedSongId = song.getSongTableCount();
+                await _song.saveSongAsync(userId, songUpload.Title, songUploadDate.ToString());
+                int lastAddedSongId = _song.getSongTableCount();
                 songUpload.Avatar.SaveAs(Helpers.getAvatarPath(userId, lastAddedSongId));
                 songUpload.Song.SaveAs(Helpers.getSongPath(userId, lastAddedSongId));
 
@@ -66,13 +67,13 @@ namespace streaming_inż.Controllers
         
         public string extractSong(ExtractFile file)
         {
-            song.ExtractSampleFromSong(file);
+            _song.ExtractSampleFromSong(file);
             return getExtractedSong(file);
         }
         
         public ActionResult GetFavoriteSongs()
         {
-            var likedSongs = song.GetFavoriteSongs(User.Identity.GetUserId().ToString());
+            var likedSongs = _song.GetFavoriteSongs(User.Identity.GetUserId().ToString());
 
             return View("_SongContainer", likedSongs);
         }
@@ -85,7 +86,7 @@ namespace streaming_inż.Controllers
                 UserId = User.Identity.GetUserId(),
                 SongId = int.Parse(songId.Split('_')[1])
             };
-            await song.AddFavoriteSongAsync(likedSong);
+            await _song.AddFavoriteSongAsync(likedSong);
             return Json(new { });
         }
 
@@ -96,10 +97,18 @@ namespace streaming_inż.Controllers
             return fullPath;
         }
 
+        public JsonResult RemoveSong(string songId)
+        {
+            int id = Convert.ToInt32(songId.Split('_')[1]);
+            _song.removeSong(id);
+
+            return Json(new { message = "Utwór został usunięty" });
+        }
+
         [Authorize(Roles = "Admin")]
         public ActionResult GetWaitingSongs()
         {
-            var waitingSongs = song.GetWaitingSongs();
+            var waitingSongs = _song.GetWaitingSongs();
 
             return View("_SongContainer", waitingSongs);
         }

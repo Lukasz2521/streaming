@@ -8,17 +8,18 @@ using streaming_inż.Models;
 using Microsoft.AspNet.Identity;
 using NAudio.Wave;
 using System.Web.Mvc;
+using streaming_inż.Common;
 
 namespace streaming_inż.DAL
 {
-    public class SongRepository
+    public class SongRepository : Common.ISongRepository
     {
-        private ApplicationDbContext context = new ApplicationDbContext();
+        private ApplicationDbContext _context = new ApplicationDbContext();
 
         public IEnumerable<UserSongs> getAllUserSongs(string userId)
         {
-            IEnumerable<UserSongs> userSongs = context.Song
-                .Where(s => s.userId == userId)
+            IEnumerable<UserSongs> userSongs = _context.Song
+                .Where(s => s.userId == userId && s.isAccepted)
                 .Select(s => new UserSongs
                 {
                     SongId = String.Concat(s.userId, "_", s.SongID),
@@ -42,20 +43,20 @@ namespace streaming_inż.DAL
                 isAccepted = false
             };
 
-            context.Song.Add(song);
-            await context.SaveChangesAsync();
+            _context.Song.Add(song);
+            await _context.SaveChangesAsync();
         }
 
         public int getSongTableCount()
         {
-            int songId = context.Song.OrderByDescending(x => x.SongID).FirstOrDefault().SongID;
+            int songId = _context.Song.OrderByDescending(x => x.SongID).FirstOrDefault().SongID;
 
             return songId;
         }
 
         public List<string> findByKeyword(string keyWord, string userId)
         {
-            var matchedWords = context.Song
+            var matchedWords = _context.Song
                 .Where(s => s.Title.Contains(keyWord) && s.userId != userId)
                 .Select(s => s.Title).ToList();
 
@@ -64,7 +65,7 @@ namespace streaming_inż.DAL
 
         public IEnumerable<UserSongs> getByKeyword(string keyWord, string userId)
         {
-            IEnumerable<UserSongs> matchedSongs = context.Song
+            IEnumerable<UserSongs> matchedSongs = _context.Song
                 .Where(s => s.Title.Contains(keyWord) && s.userId != userId)
                 .Select(s => new UserSongs
                 {
@@ -81,10 +82,10 @@ namespace streaming_inż.DAL
 
         public void removeSong(int songId)
         {
-            Song song = context.Song.First(s => s.SongID == songId);
+            Song song = _context.Song.First(s => s.SongID == songId);
 
-            context.Song.Remove(song);
-            context.SaveChanges();
+            _context.Song.Remove(song);
+            _context.SaveChanges();
         }
 
         public void ExtractSampleFromSong(ExtractFile file)
@@ -107,8 +108,8 @@ namespace streaming_inż.DAL
 
         public IEnumerable<UserSongs> GetFavoriteSongs(string userId)
         {
-            var favoriteSongs = (from song in context.Song
-                                 join likedSong in context.LikedSongs on song.SongID equals likedSong.SongId
+            var favoriteSongs = (from song in _context.Song
+                                 join likedSong in _context.LikedSongs on song.SongID equals likedSong.SongId
                                  where likedSong.UserId == userId
                                  select new UserSongs
                                  {
@@ -124,7 +125,7 @@ namespace streaming_inż.DAL
 
         public async Task AddFavoriteSongAsync(LikedSong likedSong)
         {
-            int likedSongCount = context.LikedSongs.Where(s => s.SongId == likedSong.SongId && s.UserId == likedSong.UserId).Count();
+            int likedSongCount = _context.LikedSongs.Where(s => s.SongId == likedSong.SongId && s.UserId == likedSong.UserId).Count();
 
             if(likedSongCount == 0)
             {
@@ -134,14 +135,14 @@ namespace streaming_inż.DAL
                     UserId = likedSong.UserId
                 };
 
-                context.LikedSongs.Add(_likedSong);
-                await context.SaveChangesAsync();
+                _context.LikedSongs.Add(_likedSong);
+                await _context.SaveChangesAsync();
             }
         }
 
         public IEnumerable<UserSongs> GetWaitingSongs()
         {
-            var songsToAccept = context.Song.Where(s => s.isAccepted != true)
+            var songsToAccept = _context.Song.Where(s => s.isAccepted != true)
                                        .Select(s => new UserSongs()
                                        {
                                            SongId = String.Concat(s.userId, "_", s.SongID),

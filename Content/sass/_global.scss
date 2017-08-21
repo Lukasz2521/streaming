@@ -110,3 +110,11 @@ h1 {
 .ui-helper-hidden-accessible > div {
     display: none;
 }
+
+.alert-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
