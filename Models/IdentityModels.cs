@@ -40,12 +40,8 @@ namespace streaming_inż.Models
     }
 
 
-    public class Song
+    public class Song : BaseSong
     {   
-        public int SongID { get; set; }
-
-        public string userId { get; set; }
-
         [Required]
         public string Title { get; set; }
 
@@ -54,32 +50,16 @@ namespace streaming_inż.Models
         public bool isAccepted { get; set;  }
 
         public virtual ApplicationUser User { get; set; }
-
-        public virtual ICollection<Category> Categories { get; set; }
     }
 
-    public class LikedSongs
+    public class LikedSong : BaseSong
     {
-        public int LikedSongsId { get; set; }
-
-        public string UserId { get; set; }
-
-        public int SongId { get; set; } 
+        public int LikedSongId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
 
         public virtual Song Song { get; set; }
     }
-
-    public class Category
-    {
-        public int CategoryID { get; set; }
-
-        public string CategoryName { get; set; }
-
-        public virtual Song Songs { get; set; }
-    }
-
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -89,8 +69,7 @@ namespace streaming_inż.Models
         }
 
         public DbSet<Song> Song { get; set; }
-        public DbSet<LikedSongs> LikedSongs { get; set; }
-        public DbSet<Category> Category { get; set; }
+        public DbSet<LikedSong> LikedSong { get; set; }
 
         public static ApplicationDbContext Create()
         {

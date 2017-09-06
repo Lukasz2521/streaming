@@ -18,17 +18,15 @@ namespace streaming_inż.Models
         public HttpPostedFileBase Song { get; set; }
     }
 
-    public class ExtractFile
+    public class ExtractFile: BaseSong
     {
-        public string songId { get; set; }
         public int cutFrom { get; set; }
+
         public int cutTo { get; set; }
     }
 
-    public class UserSongs
+    public class UserSong: BaseSong
     {
-        public string SongId { get; set; }
-
         public string UserName { get; set; }
 
         public string Title { get; set; }
@@ -36,12 +34,5 @@ namespace streaming_inż.Models
         public string UploadTime { get; set; }
 
         public string avatarPath { get; set; }
-    }
-
-    public class LikedSong
-    {
-        public int SongId { get; set; }
-
-        public string UserId { get; set; }
     }
 }

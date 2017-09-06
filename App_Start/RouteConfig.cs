@@ -32,6 +32,12 @@ namespace streaming_inż
             );
 
             routes.MapRoute(
+                name: "Settings",
+                url: "settings",
+                defaults: new { controller = "Profile", action = "GetUserSettings" }
+            );
+
+            routes.MapRoute(
                 name: "SongUpload",
                 url: "upload",
                 defaults: new { controller = "Profile", action = "UploadSong" }

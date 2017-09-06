@@ -9,11 +9,11 @@ namespace streaming_inż.Common
 {
     public interface ISongRepository
     {
-        IEnumerable<UserSongs> getAllUserSongs(string userId);
+        IEnumerable<UserSong> getAllUserSongs(string userId);
 
         Task saveSongAsync(string userId, string title, string publicDate);
 
-        IEnumerable<UserSongs> GetFavoriteSongs(string userId);
+        IEnumerable<UserSong> GetFavoriteSongs(string userId);
 
         Task AddFavoriteSongAsync(LikedSong likedSong);
 
@@ -21,12 +21,12 @@ namespace streaming_inż.Common
 
         List<string> findByKeyword(string keyWord, string userId);
 
-        IEnumerable<UserSongs> getByKeyword(string keyWord, string userId);
+        IEnumerable<UserSong> getByKeyword(string keyWord, string userId);
 
         void removeSong(int songId);
 
         void ExtractSampleFromSong(ExtractFile file);
 
-        IEnumerable<UserSongs> GetWaitingSongs();
+        IEnumerable<UserSong> GetWaitingSongs();
     }
 }

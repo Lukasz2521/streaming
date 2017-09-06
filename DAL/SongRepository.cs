@@ -12,20 +12,20 @@ using streaming_inż.Common;
 
 namespace streaming_inż.DAL
 {
-    public class SongRepository : Common.ISongRepository
+    public class SongRepository : ISongRepository
     {
         private ApplicationDbContext _context = new ApplicationDbContext();
 
-        public IEnumerable<UserSongs> getAllUserSongs(string userId)
+        public IEnumerable<UserSong> getAllUserSongs(string userId)
         {
-            IEnumerable<UserSongs> userSongs = _context.Song
-                .Where(s => s.userId == userId && s.isAccepted)
-                .Select(s => new UserSongs
+            IEnumerable<UserSong> userSongs = _context.Song
+                .Where(s => s.UserId == userId && s.isAccepted)
+                .Select(s => new UserSong
                 {
-                    SongId = String.Concat(s.userId, "_", s.SongID),
+                    SongId = s.SongId,
                     UserName = s.User.UserName,
                     Title = s.Title,
-                    avatarPath = String.Concat("/avatars/", s.userId, "_", s.SongID, ".jpg"),
+                    avatarPath = String.Concat("/avatars/", s.UserId, "_", s.SongId, ".jpg"),
                     UploadTime = s.PublicDate
                 })
                 .ToList();
@@ -37,7 +37,7 @@ namespace streaming_inż.DAL
         {
             var song = new Song()
             {
-                userId = userId,
+                UserId = userId,
                 Title = title,
                 PublicDate = publicDate,
                 isAccepted = false
@@ -49,7 +49,7 @@ namespace streaming_inż.DAL
 
         public int getSongTableCount()
         {
-            int songId = _context.Song.OrderByDescending(x => x.SongID).FirstOrDefault().SongID;
+            int songId = _context.Song.OrderByDescending(x => x.SongId).FirstOrDefault().SongId;
 
             return songId;
         }
@@ -57,22 +57,22 @@ namespace streaming_inż.DAL
         public List<string> findByKeyword(string keyWord, string userId)
         {
             var matchedWords = _context.Song
-                .Where(s => s.Title.Contains(keyWord) && s.userId != userId)
-                .Select(s => s.Title).ToList();
+                                .Where(s => s.Title.Contains(keyWord) && s.UserId != userId)
+                                .Select(s => s.Title).ToList();
 
             return matchedWords;
         }
 
-        public IEnumerable<UserSongs> getByKeyword(string keyWord, string userId)
+        public IEnumerable<UserSong> getByKeyword(string keyWord, string userId)
         {
-            IEnumerable<UserSongs> matchedSongs = _context.Song
-                .Where(s => s.Title.Contains(keyWord) && s.userId != userId)
-                .Select(s => new UserSongs
+            IEnumerable<UserSong> matchedSongs = _context.Song
+                .Where(s => s.Title.Contains(keyWord) && s.UserId != userId)
+                .Select(s => new UserSong
                 {
-                    SongId = String.Concat(s.userId, "_", s.SongID),
+                    SongId = s.SongId,
                     Title = s.Title,
                     UserName = s.User.UserName,
-                    avatarPath = String.Concat("/avatars/", s.userId, "_", s.SongID, ".jpg"),
+                    avatarPath = String.Concat("/avatars/", s.UserId, "_", s.SongId, ".jpg"),
                     UploadTime = s.PublicDate
                 })
                 .ToList();
@@ -82,7 +82,7 @@ namespace streaming_inż.DAL
 
         public void removeSong(int songId)
         {
-            Song song = _context.Song.First(s => s.SongID == songId);
+            Song song = _context.Song.First(s => s.SongId == songId);
 
             _context.Song.Remove(song);
             _context.SaveChanges();
@@ -90,8 +90,8 @@ namespace streaming_inż.DAL
 
         public void ExtractSampleFromSong(ExtractFile file)
         {
-            using (var mp3FileReader = new Mp3FileReader(String.Concat(@"D:\Streaming_Data\Songs\", file.songId, ".mp3")))
-            using (var writer = File.Create(String.Concat(@"D:\Streaming_Data\Extract\", file.songId, ".mp3")))
+            using (var mp3FileReader = new Mp3FileReader(String.Concat(@"D:\Streaming_Data\Songs\", file.SongId, ".mp3")))
+            using (var writer = File.Create(String.Concat(@"D:\Streaming_Data\Extract\", file.SongId, ".mp3")))
             {
                 var startPosition = TimeSpan.FromSeconds(file.cutFrom);
                 var endPosition = TimeSpan.FromSeconds(file.cutTo);
@@ -106,17 +106,17 @@ namespace streaming_inż.DAL
             }
         }
 
-        public IEnumerable<UserSongs> GetFavoriteSongs(string userId)
+        public IEnumerable<UserSong> GetFavoriteSongs(string userId)
         {
             var favoriteSongs = (from song in _context.Song
-                                 join likedSong in _context.LikedSongs on song.SongID equals likedSong.SongId
+                                 join likedSong in _context.LikedSong on song.SongId equals likedSong.SongId
                                  where likedSong.UserId == userId
-                                 select new UserSongs
+                                 select new UserSong
                                  {
-                                     SongId = String.Concat(song.userId, "_", song.SongID),
+                                     SongId = song.SongId,
                                      Title = song.Title,
                                      UserName = song.User.UserName,
-                                     avatarPath = String.Concat("/avatars/", song.userId, "_", song.SongID, ".jpg"),
+                                     avatarPath = String.Concat("/avatars/", song.UserId, "_", song.SongId, ".jpg"),
                                      UploadTime = song.PublicDate
                                  }).ToList();
 
@@ -125,30 +125,30 @@ namespace streaming_inż.DAL
 
         public async Task AddFavoriteSongAsync(LikedSong likedSong)
         {
-            int likedSongCount = _context.LikedSongs.Where(s => s.SongId == likedSong.SongId && s.UserId == likedSong.UserId).Count();
+            int likedSongCount = _context.LikedSong.Where(s => s.SongId == likedSong.SongId && s.UserId == likedSong.UserId).Count();
 
             if(likedSongCount == 0)
             {
-                var _likedSong = new LikedSongs()
+                var _likedSong = new LikedSong()
                 {
                     SongId = likedSong.SongId,
                     UserId = likedSong.UserId
                 };
 
-                _context.LikedSongs.Add(_likedSong);
+                _context.LikedSong.Add(_likedSong);
                 await _context.SaveChangesAsync();
             }
         }
 
-        public IEnumerable<UserSongs> GetWaitingSongs()
+        public IEnumerable<UserSong> GetWaitingSongs()
         {
             var songsToAccept = _context.Song.Where(s => s.isAccepted != true)
-                                       .Select(s => new UserSongs()
+                                       .Select(s => new UserSong()
                                        {
-                                           SongId = String.Concat(s.userId, "_", s.SongID),
+                                           SongId = s.SongId,
                                            Title = s.Title,
                                            UserName = s.User.UserName,
-                                           avatarPath = String.Concat("/avatars/", s.userId, "_", s.SongID, ".jpg"),
+                                           avatarPath = String.Concat("/avatars/", s.UserId, "_", s.SongId, ".jpg"),
                                            UploadTime = s.PublicDate
                                        }).ToList();
 

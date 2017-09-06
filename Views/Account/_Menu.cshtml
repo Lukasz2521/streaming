@@ -58,7 +58,9 @@
                             </svg>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a class="menu-item" href="#">Ustawienia</a></li>
+                            <li>
+                                @Html.ActionLink("Ustawienia", "GetUserSettings", "Profile")
+                            </li>
                             <li>
                                 @Html.ActionLink("Udostępnij muzykę", "UploadSong", "Profile")
                             </li>

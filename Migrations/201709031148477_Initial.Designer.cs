@@ -7,13 +7,13 @@ namespace streaming_inż.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Rebuildlikedsong : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Rebuildlikedsong));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707041751536_Rebuild liked song"; }
+            get { return "201709031148477_Initial"; }
         }
         
         string IMigrationMetadata.Source

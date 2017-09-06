@@ -3,34 +3,37 @@ namespace streaming_inż.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Categories",
+                "dbo.LikedSongs",
                 c => new
                     {
-                        CategoryID = c.Int(nullable: false, identity: true),
-                        CategoryName = c.String(),
-                        Songs_SongID = c.Int(),
+                        LikedSongId = c.Int(nullable: false, identity: true),
+                        UserId = c.String(maxLength: 128),
+                        SongId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.CategoryID)
-                .ForeignKey("dbo.Songs", t => t.Songs_SongID)
-                .Index(t => t.Songs_SongID);
+                .PrimaryKey(t => t.LikedSongId)
+                .ForeignKey("dbo.Songs", t => t.SongId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .Index(t => t.UserId)
+                .Index(t => t.SongId);
             
             CreateTable(
                 "dbo.Songs",
                 c => new
                     {
-                        SongID = c.Int(nullable: false, identity: true),
-                        userId = c.String(maxLength: 128),
+                        SongId = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false),
                         PublicDate = c.String(),
+                        isAccepted = c.Boolean(nullable: false),
+                        UserId = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.SongID)
-                .ForeignKey("dbo.AspNetUsers", t => t.userId)
-                .Index(t => t.userId);
+                .PrimaryKey(t => t.SongId)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .Index(t => t.UserId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -112,26 +115,28 @@ namespace streaming_inż.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Songs", "userId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.LikedSongs", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.LikedSongs", "SongId", "dbo.Songs");
+            DropForeignKey("dbo.Songs", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Categories", "Songs_SongID", "dbo.Songs");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Songs", new[] { "userId" });
-            DropIndex("dbo.Categories", new[] { "Songs_SongID" });
+            DropIndex("dbo.Songs", new[] { "UserId" });
+            DropIndex("dbo.LikedSongs", new[] { "SongId" });
+            DropIndex("dbo.LikedSongs", new[] { "UserId" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.Songs");
-            DropTable("dbo.Categories");
+            DropTable("dbo.LikedSongs");
         }
     }
 }

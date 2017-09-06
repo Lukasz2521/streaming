@@ -13,7 +13,6 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using streaming_inż.DAL;
 using System.Threading;
-using System.Threading.Tasks;
 using streaming_inż.Common;
 
 namespace streaming_inż.Controllers
@@ -22,13 +21,13 @@ namespace streaming_inż.Controllers
     public class ProfileController : Controller
     {
         private ISongRepository _song = new SongRepository();
-      
+        private IUserRepository _user = new UserRepository();
 
         [OutputCache(Duration = 60)]
         public ActionResult Index(string userName)
         {
             var allUserSongsModel = _song.getAllUserSongs(User.Identity.GetUserId());
-                                         
+
             return View(allUserSongsModel);
         }
 
@@ -92,7 +91,7 @@ namespace streaming_inż.Controllers
 
         private string getExtractedSong(ExtractFile file)
         {
-            string fullPath = Path.Combine(String.Concat("http://localhost:62316/extract/", file.songId, ".mp3"));
+            string fullPath = Path.Combine(String.Concat("http://localhost:62316/extract/", file.SongId, ".mp3"));
  
             return fullPath;
         }
@@ -111,6 +110,19 @@ namespace streaming_inż.Controllers
             var waitingSongs = _song.GetWaitingSongs();
 
             return View("_SongContainer", waitingSongs);
+        }
+
+        public ActionResult UserSettings()
+        {
+            return View("Settings");
+        }
+        
+        [HttpPost]
+        public ActionResult UserSettings(ApplicationUser user)
+        {
+            _user.UpdateSettings(user);
+
+            return View();
         }
     }
 }
